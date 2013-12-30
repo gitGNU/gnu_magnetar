@@ -1,0 +1,189 @@
+.\"     MAGNETAR
+.\"     Copyright (C) 2013 Ben Asselstine
+.\"
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  
+.\" 02110-1301, USA.
+.TH MAGNETAR "1" "December 2013" "magnetar" "User Commands"
+.SH NAME
+magnetar \- pilot a spaceship through magnetic fields with asteroids.
+.SH SYNOPSIS
+.B magnetar
+[\fIOPTION\fR]...
+.SH DESCRIPTION
+
+Your job is to pilot your ship through an asteroid field near a magnetar.  The magnetic fields from the magnetar will have their way with your ship, pushing and pulling it as you try to avoid hitting an asteroid.  To deal with the havoc of these powerful magnetic waves, you can steer and use your thrusters, or invert the magnetic polarity of the entire ship.
+
+The ship's heads-up-display shows the magnetic fields as the red bars on the left and right of the screen.  The fields on the left push your ship to the right, and the fields on the right do the opposite.  As the magnetic fields of the magnetar change, so do the bars.  The strength of the magnetic field is indicated by the amount that the bar is filled-in.
+
+The ship's heads-up-display also shows the number of asteroids in the asteroid field, as well as your available energy.
+
+Most of the asteroids aren't magnetic, so the magnetic fields do not usually affect them like they do your ship.  You know from prior experience that shooting asteroids usualy only compounds the problem.
+
+Your ship only has a limited supply of energy.  Using thrusters and switching the magnetic polarity of the ship cost you valuable energy.  It takes a lot of energy to withstand the impact of asteroid on the ship.
+
+When you run out of energy, there is still enough power for life support.  But you are at the mercy of the magnetar, powerless to move as asteroids continue to hurl past the ship.
+
+The ship's controls are:
+.TP
+  D turns the ship counter-clockwise
+.TP
+  F turns the ship clockwise
+.TP
+  J burns the thruster
+.TP
+  K invert magnetic polarity of the ship
+.PP
+
+To start the game, add coins by pressing the space bar.
+
+Press 1 to start a one-player game, or 2 to start a two-player game.
+
+.SH "OPTIONS"
+
+.TP
+\-\-coin \fIKEYCODE\fR
+Change the keycode which adds coins to the game.  The default keycode for coining up is the space key.
+.TP
+\-\-one \fIKEYCODE\fR
+Change the keycode which starts a single player game.  The default keycode for starting a one-player game is the 1 key.
+.TP
+\-\-p1-ccw \fIKEYCODE\fR
+Specify the keycode which rotates player one's ship anti-clockwise.  The default keycode for turning player one's ship to the left is the D key.
+.TP
+\-\-p1-cw \fIKEYCODE\fR
+Specify the keycode which rotates player one's ship clockwise.  The default keycode for turning player one's ship to the right is the F key.
+.TP
+\-\-p1-fire \fIKEYCODE\fR
+Specify the keycode which inverts the magnetic polarity of player one's ship or shoots a laser.  The default keycode for player one fire is the K key.
+.TP
+\-\-p1-thrust \fIKEYCODE\fR
+Change the keycode which propels player one's ship forward.  The default keycode for player one's thrust is the J key.
+.TP
+\-\-p2-ccw \fIKEYCODE\fR
+Specify the keycode which rotates player two's ship anti-clockwise.  The default keycode for turning player two's ship to the left is the D key.
+.TP
+\-\-p2-cw \fIKEYCODE\fR
+Specify the keycode which rotates player two's ship clockwise.  The default keycode for turning player two's ship to the right is the F key.
+.TP
+\-\-p2-fire \fIKEYCODE\fR
+Specify the keycode which inverts the magnetic polarity of player two's ship or shoots a laser.  The default keycode for player two fire is the K key.
+.TP
+\-\-p2-thrust \fIKEYCODE\fR
+Change the keycode which propels player two's ship forward.  The default keycode for player two's thrust is the J key.
+.TP
+\-\-pause \fIKEYCODE\fR
+Specify the keycode which suspends and resumes the game.  The default keycode for pausing the game is the P key.
+.TP
+\-\-test \fIKEYCODE\fR
+Change the keycode which starts the test mode.  The default keycode for entering the test mode is the T key.
+.TP
+\-\-two \fIKEYCODE\fR
+Change the keycode which starts a two-player game.  The default keycode for starting a two-player game is the 2 key.
+.TP
+\-\-quit \fIKEYCODE\fR
+Change the keycode which ends the game.  The default keycode for quitting the game is the Q key.
+.TP
+\-\-aspect \fIINT\fR/\fIINT\fR
+Change the aspect ratio of the screen.  The width of the screen affects how much the thrust works.  A wider aspect ratio makes the game easier.  The default aspect ratio is the aspect ratio of your screen.  A common wide-screen ratio is 16/9, but a more arcade-ish ratio is 4/3 or 3/4.
+.TP
+\-f, \-\-fps \fIFLOAT\fR
+Try to draw this many frames per second.  The default fps is 30.
+.TP
+\-\-greyscale
+Draw the display in shades of grey.
+.TP
+\-\-nopause
+Don't pause when the cursor leaves the window.
+.TP
+\-p, \-\-percent \fIINT\fR
+Specify the percent of the display the window should take up.  The default is 87%.
+.TP
+\-\-stats
+Put gameplay statistics in ~/magnetar-stats-p[1-2].csv.
+.TP
+\-\-windowpos \fIINT\fR,\fIINT\fR
+Specify the x and y coordinates of the game window.
+.TP
+\-\-version
+Display version information and exit.
+.TP
+\-\-help
+Give a list of the available options.
+.SH "TEST MODE"
+Pressing T puts the game into test mode.  Entering test mode aborts the current game if one is already started.
+Changing the settings while in test mode cause the configuration file to be modified.
+
+.SH "CONFIGURATION FILE"
+The configuration file is meant to be modified by the test mode, but it can also be edited by hand.
+
+The following values are allowed in the configuration file: 
+.TP
+freeplay
+Don't require any credits to start the game.
+.TP
+quiet
+Don't play sounds.
+.TP
+quiet\-attract
+Don't play sounds during the pre-game attract mode.
+.TP
+lives \fINUM-LIVES\fR
+Specify the number of ships that each player begins the game with.  The default number of ships is 3.
+.TP
+cocktail
+Invert player two's display, and also change the controls.
+.IP
+The default controls for cocktail player 2 are:
+.IP
+X turns the ship counter-clockwise
+.IP
+C turns the ship clockwise
+.IP
+N burns the thruster
+.IP
+M invert magnetic polarity of the ship
+.TP
+extra-ship-15000
+Give a new ship to the player when 15000 points are earned.  The default number of points needed to gain an extra ship is 10000.
+.TP
+extra-ship-5000
+Give a new ship to the player when 5000 points are earned.
+.TP
+extra-ship-20000
+Give a new ship to the player when 20000 points are earned.
+.TP
+coins-per-credit \fIINT\fR
+Specify the number of coins needed for a single credit.  The default number of coins per credit is 1.
+.TP
+starting-level \fIINT\fR
+Specify the stage number to start the game on.  The default starting stage is 1.
+The highest stage is 25.
+
+.SH "KEYCODES"
+The keycodes are X11 key symbol definitions that refer to the keys on a keyboard.  A full list can be seen here:
+.br
+http://cgit.freedesktop.org/xorg/proto/x11proto/tree/keysymdef.h
+.br
+To use a keycode with one of the magnetar command-line options, remove the `XK_' prefix of the keycode.  e.g. use `Return' rather than `XK_Return'.
+.SH "FILES"
+High scores are kept in ~/.magnetar/high-score.
+.br
+Configuration is kept in ~/.magnetar/config.
+.br
+Statistics files are stored in ~/magnetar-p1.csv and ~/magnetar-p2.csv.
+
+.SH "REPORTING BUGS"
+Report bugs to https://sv.nongnu.org/bugs/?group=magnetar.
+

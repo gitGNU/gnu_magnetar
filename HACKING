@@ -1,0 +1,73 @@
+Copyright (C) 2013 Ben Asselstine
+This file licensed under the terms of the GNU General Public License version 3, or later.
+
+Here is a basic rundown of what objects are in the game.
+
+- buzzer is an asteroid.
+- castle is a circular bonus thing that appears and disappears.
+- ring is a single circle component of a castle.
+- king is are the magnet bars, and also one red animated arrow that is pointing.
+- an instance of king, the queen is no magnets, and the opposite red animated arrow that is pointing.
+- ship is the ship.
+- kapow is the object that does explosions.
+- spikes is the object that makes it look like the castles are exploding.
+- menu is the object that does menuing in the test mode.
+- stages holds all of the various stages.
+- stage holds the parameters for a given stage.
+- starfield is the object that does the moving stars.
+- fireball is a magnet bar.
+- laser is the bullet that the ship fires.
+- minefield is the collection of buzzers that are falling from the top of the screen.
+- text is a text object.
+- game is an object that handles the game stats, the players, and certain game events.
+- player is a player object.
+- stats is an object that displays different text on the screen depending on what state the game is in.
+Some of the object names come from xsc, a star castle clone, which is why some of the names are not very suitable.
+
+
+There are 4 "Thing" classes that refer to onscreen game objects.
+
+1. Thing
+every on screen object is a Thing.
+every thing has a scale.
+the scale represents how big the object appears on screen.
+the height of the screen divided by the scale is how many pixels tall the object is on screen.
+for text objects, the scale refers to the size of the first letter.
+every Thing object has an x and y position on the screen.
+
+2. XyThing
+all onscreen objects except for text are XyThing objects, which adds a delta X and Y position for the object on the screen.  This means that these objects move in a way that their new position is x = x + dx.
+if an object is not an XYthing object it does not move.
+
+3. TThing
+some onscreen objects are TThing objects, which are turnable things.  These objects have an orientation, and a delta orientation.
+if an object is not a Tthing object, it does not turn.
+
+4. EThing
+some objects are EThing objects, which is just an amalgamation of XyThings and TTthings.
+
+The main loop is in xsc.C, and it holds the finite state machine.
+
+Command-line proccessing is in args.C.
+
+The font set for the game is in cinematronic.C.
+
+The description of font sets is in font.h.
+
+The icon for the game is in icon.xpm.
+
+The basic drawing routines and colour routines are in util.C.
+
+Trigonometric routines are in trig.C.
+
+Sounds are played in sound.C.
+
+Random numbers are generated with random.h.
+
+Time stamping routines are in stamp.h.
+
+Time routines are in timing.h.
+
+challenging-stage.C is just a specialized form of a stage object.
+
+The parameters for a single magnet bar is held in magnet-info.C.

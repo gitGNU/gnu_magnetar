@@ -1,0 +1,101 @@
+This file is Copyright (C) 2013 Ben Asselstine, and is licensed under the terms of the GPL version 3, or later.
+
+MAGNETAR
+
+Your job is to pilot your ship through an asteroid field near a magnetar.  The magnetic fields from the magnetar will have their way with your ship, pushing and pulling it.  To deal with the havoc of these powerful magnetic waves, you can use your thrusters, or invert the magnetic polarity of the entire ship.
+
+The ship's heads-up-display shows the magnetic fields as the red bars on the left and right of the screen.  The fields on the left push your ship to the right, and the fields on the right do the opposite.  As the magnetic fields of the magnetar change, so do the bars.  The strength of the magnetic field is indicated by the amount that the bar is filled-in.
+
+The ship's heads-up-display also shows the number of asteroids in the asteroid field, as well as your available energy.
+
+Most of the asteroids aren't magnetic, so the magnetic fields do not usually affect them like they do your ship.  You know from prior experience that shooting asteroids usualy only compounds the problem.
+
+Your ship only has a limited supply of energy.  Using thrusters and switching the magnetic polarity of the ship cost you valuable energy.  It takes a lot of energy to withstand the impact of asteroid on the ship.
+
+When you run out of energy, there is still enough for life support.  But you are at the mercy of the magnetar, powerless to move as asteroids continue to hurl past the ship.
+
+The ship's controls are:
+
+  D turns the ship counter-clockwise
+
+  F turns the ship clockwise
+
+  J burns the thruster
+
+  K invert magnetic polarity of the ship
+
+
+To start the game, add credits with the space bar.
+
+After credits have been inserted, press 1 to start a one player game, or 2 to start a two player game.
+
+
+Origin of Source Code and Media
+
+Some of the source code originally comes from the xsc project which is a Star Castle clone by Mark B. Hanson.  The rest of the source code comes from Ben Asselstine and was created specifically for the magnetar project.
+
+The icon.xpm file was created specifically for magnetar in the Gimp by Ben Asselstine.
+
+Sounds
+
+The sound files in this game come from four sources: 
+1. wordwarvi: http://sourceforge.net/projects/wordwarvi/
+2. created specifically for the magnetar project in audacity
+3. created on www.bxfr.net
+4. downloaded from jamendo.com
+
+The following files come from the wordwarvi project:
+sounds/bodyslam.wav
+sounds/bombexplosion.wav
+sounds/flak_gun_sound.wav
+
+These sounds are licensed under Creative Commons Attribution Share-Alike 3.0 Unported.
+Copyright (C) 2008 Stephen M. Cameron
+
+The following files were created specifically for the magnetar project using audacity.  They are licensed under the terms of the GNU General Public License version 3, or later.
+
+sounds/magnetar.wav
+sounds/wave-complete.wav
+sounds/reward-obtained.wav
+sounds/level-begin.wav
+sounds/challenging-stage.wav
+sounds/thrust.wav
+
+The following files were created with the help of http://www.bfxr.net/ (which is free software).  Some of these files were subsequently modified in audacity.  They are licensed under the terms of the GNU General Public License version 3, or later.
+sounds/reward-out.wav
+sounds/reward-in.wav
+sounds/coin-in.wav
+sounds/game-over.wav
+sounds/invert-polarity.wav
+sounds/congratulations.wav
+sounds/asteroid-leaving.wav
+sounds/deflect.wav
+sounds/magnets.wav
+
+bonus.wav comes from http://www.jamendo.com/en/track/773634/born-to-play 
+The song is by  Andrey Avkhimovich.  Licensed under a Creative Commons Attribution 3.0 license.
+
+
+Setting up the game in a cabinet
+
+When this game is installed in a cabinet, it may be helpful to turn the whole screen to account for different orientations of monitors.  here are the commands to turn the display:
+
+to turn the whole display upside down
+$ xrandr -o inverted
+to turn it -90 degrees
+$ xrandr -o left
+to turn it +90 degrees
+$ xrandr -o right
+to put it back to normal:
+$ xrandr -o normal
+
+You will want to run magnetar without a window manager, and with the --percent 100 and --nopause command-line options.
+
+Perhaps there will need to be a way of ensuring that a mouse pointer does not appear in X11.
+
+You will want to set up a keyboard card so that the buttons on the control panel overlay can send the correct key codes to the game.
+The KE18 by Hagstrom Electronics has more than enough inputs for this game.
+http://arcadecontrols.com/arcade_input.shtml#KE18-KE24
+But perhaps the KE24-FAST is better.  $100 USD.
+Watch out that you don't get a keyboard card that has ghosting.  where if two buttons are pressed at once, one of them is cancelled out.
+
