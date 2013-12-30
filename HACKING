@@ -1,6 +1,18 @@
 Copyright (C) 2013 Ben Asselstine
 This file licensed under the terms of the GNU General Public License version 3, or later.
 
+Build dependencies:
+  automake autoconf libtool m4 gcc g++ make 
+
+And development packages for:
+  libX11 libXpm libSDL libSDL-mixer
+
+Building from git:
+  $ autoreconf -fis
+  $ ./configure
+  $ make
+  $ sudo make install
+
 Here is a basic rundown of what objects are in the game.
 
 - buzzer is an asteroid.
