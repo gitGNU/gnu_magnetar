@@ -76,7 +76,7 @@ Stats::Stats(Ship *s, Game *g)
     text_initials[2].set_scale(scale / 4.0);
     text_initial_boxes[2].set_scale(scale / 4.0);
 
-    text_copyright.set_scale(scale / 3.0);
+    text_copyright.set_scale(scale / 2.3);
 
     set_gc(fetch_gc(GC_BRIGHT_GREY));
     text_primary.set_gc(fetch_gc(GC_DULL_BLUE));
