@@ -25,6 +25,8 @@
 
 const int font_digit_offset = 0;
 const int font_bar_offset = 10;
+const int font_dot_offset = 67;
+const int font_colon_offset = 68;
 const int font_upper_offset = 11;
 const int font_lower_offset = 37;
 const int font_copyright_offset = 63;

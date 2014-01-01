@@ -43,6 +43,8 @@ public:
     Menu *menu;
 
     Text text_copyright;
+    Text text_music;
+    Text text_www;
     Text text_primary;
     Text text_secondary;
     Text text_tertiary;

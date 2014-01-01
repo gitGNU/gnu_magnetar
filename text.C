@@ -1,5 +1,5 @@
 //      MAGNETAR
-//      Copyright (c) 1993-2005 by Mark B. Hanson (mbh@panix.com).
+//      Copyright (c) 1993-2005, 2013 by Mark B. Hanson (mbh@panix.com).
 //      Copyright (C) 2013 Ben Asselstine
 //
 //  This program is free software; you can redistribute it and/or modify
@@ -81,7 +81,7 @@ double Text::calculate_width()
         message[i] == ' ' || message[i] == '>' || message[i] == '<' ||
         message[i] == '/') {
       width += get_charwidth();
-    } else if (message[i] == '|') {
+    } else if (message[i] == '|' || message[i] == '.' || message[i] == ':') {
       width += get_charwidth() / 3.0;
     } else {
       continue;
@@ -107,8 +107,14 @@ Text::render(const bool ink)
 	    offset = font_upper_offset + message[i] - 'A';
 	} else if (message[i] >= 'a' && message[i] <= 'z') {
 	    offset = font_lower_offset + message[i] - 'a';
-	} else if (message[i] == '|') {
+	} else if (message[i] == '|'){
 	    offset = font_bar_offset;
+	    width /= 3.0;
+	} else if (message[i] == '.') {
+	    offset = font_dot_offset;
+	    width /= 3.0;
+	} else if (message[i] == ':') {
+	    offset = font_colon_offset;
 	    width /= 3.0;
 	} else if (message[i] == '@') {
 	    offset = font_copyright_offset;

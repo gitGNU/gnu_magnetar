@@ -1,5 +1,5 @@
 //      MAGNETAR
-//      Copyright (c) 1993-2005 by Mark B. Hanson (mbh@panix.com).
+//      Copyright (c) 1993-2005, 2013 by Mark B. Hanson (mbh@panix.com).
 //      Copyright (C) 2013 Ben Asselstine
 //
 //  This program is free software; you can redistribute it and/or modify
@@ -45,6 +45,8 @@ Stats::Stats(Ship *s, Game *g)
     text_p2.set_window(game_window);
     text_tertiary.set_window(game_window);
     text_quaternary.set_window(game_window);
+    text_music.set_window(game_window);
+    text_www.set_window(game_window);
     text_mines_to_go.set_window(game_window);
     text_lives_left.set_window(game_window);
     text_energy_bar.set_window(game_window);
@@ -65,6 +67,8 @@ Stats::Stats(Ship *s, Game *g)
     text_p2.set_scale(scale);
     text_tertiary.set_scale(scale);
     text_quaternary.set_scale(scale);
+    text_music.set_scale(scale);
+    text_www.set_scale(scale);
     text_mines_to_go.set_scale(scale*1.1);
     text_lives_left.set_scale(scale*1.1);
     text_energy_bar.set_scale(scale*1.0);
@@ -87,6 +91,7 @@ Stats::Stats(Ship *s, Game *g)
     text_p2_score.set_gc(fetch_gc(GC_DULL_BLUE));
     text_tertiary.set_gc(fetch_gc(GC_DULL_BLUE));
     text_quaternary.set_gc(fetch_gc(GC_DULL_BLUE));
+    text_www.set_gc(fetch_gc(GC_DULL_BLUE));
     text_mines_to_go.set_gc(fetch_gc(GC_DULL_ORANGE));
     text_lives_left.set_gc(fetch_gc(GC_BRIGHT_GREY));
     text_energy_bar.set_gc(fetch_gc(GC_DULL_YELLOW));
@@ -570,6 +575,8 @@ Stats::render(const bool ink)
       last_score = score;
 
       text_copyright.set_message("");
+      text_music.set_message("");
+      text_www.set_message("");
       text_secondary.set_message("");
       text_primary.set_message("");
       text_p1_score.set_message("");
@@ -591,6 +598,8 @@ Stats::render(const bool ink)
           {
           case STATE_COPYRIGHT:
             text_copyright.set_message("MAGNETAR");
+            text_music.set_message("Music: Andrey Avkhimovich");
+            text_www.set_message("http://sv.gnu.org/p/magnetar");
             text_secondary.set_message("with a name from 1992");
             text_primary.set_message("the 1979 arcade game");
             text_tertiary.set_message("Licensed under the gpl");
@@ -900,6 +909,12 @@ Stats::render(const bool ink)
     text_quaternary.set_position(-1.0, wh()-((text_quaternary.get_charheight()/2)+(text_quaternary.get_charheight()*2)));
     text_quaternary.render(ink);
 
+    text_www.set_position(-1.0, wh()-((text_www.get_charheight()/2)+(text_www.get_charheight()*4)));
+    text_www.render(ink);
+
+    text_music.set_position(-1.0, wh()-((text_music.get_charheight()/2)+(text_music.get_charheight()*6)));
+    text_music.render(ink);
+
     // display the p1 and p2 score (during high score state)
     text_p1.set_position((ww2() + ((text_p1.get_size()/text_p1.get_scale())/ 2.0) - (text_p1.calculate_width() / 2.0))/4.0, 
                          (wh()-(text_p1.get_charheight()*1.5)) / 2);
@@ -985,6 +1000,8 @@ Stats::resize(const int nwidth, const int nheight)
     text_initials[0].resize(nwidth, nheight);
     text_initials[1].resize(nwidth, nheight);
     text_initials[2].resize(nwidth, nheight);
+    text_www.resize(nwidth, nheight);
+    text_music.resize(nwidth, nheight);
     text_copyright.resize(nwidth, nheight);
     menu->resize(nwidth, nheight);
 } // Stats::resize
