@@ -19,7 +19,7 @@ dnl 02110-1301, USA.
 
 
 dnl Initializations:
-AC_INIT([magnetar],[0.0.1],[http://sv.nongnu.org/bugs/?group=magnetar])
+AC_INIT([magnetar],[0.0.2],[http://sv.nongnu.org/bugs/?group=magnetar])
 AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE
 AC_PREREQ([2.69])
