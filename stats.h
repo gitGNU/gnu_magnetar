@@ -44,6 +44,7 @@ public:
 
     Text text_copyright;
     Text text_music;
+    Text text_sound;
     Text text_www;
     Text text_primary;
     Text text_secondary;

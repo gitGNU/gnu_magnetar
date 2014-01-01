@@ -46,6 +46,7 @@ Stats::Stats(Ship *s, Game *g)
     text_tertiary.set_window(game_window);
     text_quaternary.set_window(game_window);
     text_music.set_window(game_window);
+    text_sound.set_window(game_window);
     text_www.set_window(game_window);
     text_mines_to_go.set_window(game_window);
     text_lives_left.set_window(game_window);
@@ -68,6 +69,7 @@ Stats::Stats(Ship *s, Game *g)
     text_tertiary.set_scale(scale);
     text_quaternary.set_scale(scale);
     text_music.set_scale(scale);
+    text_sound.set_scale(scale);
     text_www.set_scale(scale);
     text_mines_to_go.set_scale(scale*1.1);
     text_lives_left.set_scale(scale*1.1);
@@ -576,6 +578,7 @@ Stats::render(const bool ink)
 
       text_copyright.set_message("");
       text_music.set_message("");
+      text_sound.set_message("");
       text_www.set_message("");
       text_secondary.set_message("");
       text_primary.set_message("");
@@ -599,6 +602,7 @@ Stats::render(const bool ink)
           case STATE_COPYRIGHT:
             text_copyright.set_message("MAGNETAR");
             text_music.set_message("Music: Andrey Avkhimovich");
+            text_sound.set_message("Some Sounds: Stephen M. Cameron");
             text_www.set_message("http://sv.gnu.org/p/magnetar");
             text_secondary.set_message("with a name from 1992");
             text_primary.set_message("the 1979 arcade game");
@@ -912,8 +916,12 @@ Stats::render(const bool ink)
     text_www.set_position(-1.0, wh()-((text_www.get_charheight()/2)+(text_www.get_charheight()*4)));
     text_www.render(ink);
 
+    text_sound.set_position(-1.0, wh()-((text_sound.get_charheight()/2)+(text_sound.get_charheight()*5)));
+    text_sound.render(ink);
+
     text_music.set_position(-1.0, wh()-((text_music.get_charheight()/2)+(text_music.get_charheight()*6)));
     text_music.render(ink);
+
 
     // display the p1 and p2 score (during high score state)
     text_p1.set_position((ww2() + ((text_p1.get_size()/text_p1.get_scale())/ 2.0) - (text_p1.calculate_width() / 2.0))/4.0, 
@@ -1002,6 +1010,7 @@ Stats::resize(const int nwidth, const int nheight)
     text_initials[2].resize(nwidth, nheight);
     text_www.resize(nwidth, nheight);
     text_music.resize(nwidth, nheight);
+    text_sound.resize(nwidth, nheight);
     text_copyright.resize(nwidth, nheight);
     menu->resize(nwidth, nheight);
 } // Stats::resize
