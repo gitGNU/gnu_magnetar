@@ -396,7 +396,7 @@ handle_event(void)
               game->state = STATE_GET_READY;
               }
 
-            if (ks == args.one && game->state == STATE_PRESS_START && game->canStart(1)) {
+            if (ks == args.one && (game->state == STATE_PRESS_START  || game->state == STATE_HIGH_SCORES || game->state == STATE_COPYRIGHT) && game->canStart(1)) {
               game->stats()->erase();
               game->king->erase();
               game->queen->erase();
@@ -404,7 +404,7 @@ handle_event(void)
               stages->start_stage(game->stats()->get_stage());
               game->state = STATE_NORMAL;
             }
-            if (ks == args.two && game->state == STATE_PRESS_START && game->canStart(2)) {
+            if (ks == args.two && (game->state == STATE_PRESS_START || game->state == STATE_HIGH_SCORES || game->state == STATE_COPYRIGHT) && game->canStart(2)) {
               game->stats()->erase();
               game->king->erase();
               game->queen->erase();

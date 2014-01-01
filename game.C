@@ -142,6 +142,7 @@ bool Game::canStart(unsigned int num_players)
         case STATE_HIGH_SCORES:
         case STATE_ATTRACT:
         case STATE_PRESS_START:
+        case STATE_COPYRIGHT:
           return true;
           break;
         default:
@@ -155,6 +156,7 @@ bool Game::canStart(unsigned int num_players)
         case STATE_HIGH_SCORES:
         case STATE_ATTRACT:
         case STATE_PRESS_START:
+        case STATE_COPYRIGHT:
           return true;
           break;
         default:
