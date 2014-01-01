@@ -603,7 +603,7 @@ Stats::render(const bool ink)
             text_copyright.set_message("MAGNETAR");
             text_music.set_message("Music: Andrey Avkhimovich");
             text_sound.set_message("Some Sounds: Stephen M. Cameron");
-            text_www.set_message("http://sv.gnu.org/p/magnetar");
+            text_www.set_message("http://magnetar.nongnu.org");
             text_secondary.set_message("with a name from 1992");
             text_primary.set_message("the 1979 arcade game");
             text_tertiary.set_message("Licensed under the gpl");
