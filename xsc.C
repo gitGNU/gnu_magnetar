@@ -1,5 +1,5 @@
 //      MAGNETAR
-//      Copyright (c) 1993-2005 by Mark B. Hanson (mbh@panix.com).
+//      Copyright (c) 1993-2005, 2013 by Mark B. Hanson (mbh@panix.com).
 //      Copyright (C) 2013 Ben Asselstine
 //
 //  This program is free software; you can redistribute it and/or modify
@@ -207,7 +207,9 @@ handle_event(void)
 	    KeySym ks = XLookupKeysym(&event.xkey, 0);
 
 
-            if (ks == XK_BackSpace)
+            if (ks == XK_BackSpace ||
+                (ks == args.p1_fire && (game->state == STATE_ATTRACT ||
+                 game->state == STATE_HIGH_SCORES)))
               {
                 game->state = STATE_TEST;
                 game->cancel_game_and_go_into_test_mode();
