@@ -81,7 +81,7 @@ const double total_elapsed_time_to_show_attract = 7.0;
 const double total_elapsed_time_to_show_high_scores = 5.0;
 const double total_elapsed_time_to_enter_initials = 35.0;
 const double total_elapsed_time_to_show_initials = 2.0;
-const double total_elapsed_time_to_show_copyright = 6.0;
+const double total_elapsed_time_to_show_copyright = 8.0;
 
 void
 key_repeat(const bool on)

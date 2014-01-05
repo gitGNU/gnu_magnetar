@@ -1,6 +1,6 @@
 //      MAGNETAR
 //      Copyright (c) 1993-2005, 2013 by Mark B. Hanson (mbh@panix.com).
-//      Copyright (C) 2013 Ben Asselstine
+//      Copyright (C) 2013, 2014 Ben Asselstine
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -58,6 +58,7 @@ Stats::Stats(Ship *s, Game *g)
     text_initials[2].set_window(game_window);
     text_initial_boxes[2].set_window(game_window);
     text_copyright.set_window(game_window);
+    text_intro.set_window(game_window);
 
     set_scale(8.0);
     text_primary.set_scale(scale);
@@ -68,9 +69,9 @@ Stats::Stats(Ship *s, Game *g)
     text_p2.set_scale(scale);
     text_tertiary.set_scale(scale);
     text_quaternary.set_scale(scale);
-    text_music.set_scale(scale);
-    text_sound.set_scale(scale);
-    text_www.set_scale(scale);
+    text_music.set_scale(scale*1.5);
+    text_sound.set_scale(scale*1.5);
+    text_www.set_scale(scale*1.5);
     text_mines_to_go.set_scale(scale*1.1);
     text_lives_left.set_scale(scale*1.1);
     text_energy_bar.set_scale(scale*1.0);
@@ -83,6 +84,7 @@ Stats::Stats(Ship *s, Game *g)
     text_initial_boxes[2].set_scale(scale / 4.0);
 
     text_copyright.set_scale(scale / 2.3);
+    text_intro.set_scale(scale*1.8);
 
     set_gc(fetch_gc(GC_BRIGHT_GREY));
     text_primary.set_gc(fetch_gc(GC_DULL_BLUE));
@@ -104,6 +106,7 @@ Stats::Stats(Ship *s, Game *g)
     text_initials[2].set_gc(fetch_gc(GC_BRIGHT_BLUE));
     text_initial_boxes[2].set_gc(fetch_gc(GC_BRIGHT_RED));
     text_copyright.set_gc(fetch_gc(GC_BRIGHT_RED));
+    text_intro.set_gc(fetch_gc(GC_BRIGHT_RED));
 
     set_theta(0.0);
     reset();
@@ -591,6 +594,7 @@ Stats::render(const bool ink)
       text_energy_bar.set_message("");
       text_quaternary.set_message("");
       text_lives_left.set_message("");
+      text_intro.set_message("");
       for (int i = 0; i < 3; i++)
         {
           text_initials[i].set_message("");
@@ -601,6 +605,7 @@ Stats::render(const bool ink)
           {
           case STATE_COPYRIGHT:
             text_copyright.set_message("MAGNETAR");
+            text_intro.set_message("your ship is at the mercy of the");
             text_music.set_message("Music: Andrey Avkhimovich");
             text_sound.set_message("Some Sounds: Stephen M. Cameron");
             text_www.set_message("http://magnetar.nongnu.org");
@@ -907,19 +912,22 @@ Stats::render(const bool ink)
     text_secondary.set_position(-1.0, (text_primary.get_charheight()/2) + (text_primary.get_charheight()));
     text_secondary.render(ink);
 
+    text_intro.set_position(-1.0, (text_primary.get_charheight()/2) + (text_primary.get_charheight()*9));
+    text_intro.render(ink);
+
     text_tertiary.set_position(-1.0, wh()-((text_tertiary.get_charheight()/2+text_tertiary.get_charheight())));
     text_tertiary.render(ink);
 
     text_quaternary.set_position(-1.0, wh()-((text_quaternary.get_charheight()/2)+(text_quaternary.get_charheight()*2)));
     text_quaternary.render(ink);
 
-    text_www.set_position(-1.0, wh()-((text_www.get_charheight()/2)+(text_www.get_charheight()*4)));
+    text_www.set_position(-1.0, wh()-((text_www.get_charheight()/2)+(text_www.get_charheight()*6)));
     text_www.render(ink);
 
-    text_sound.set_position(-1.0, wh()-((text_sound.get_charheight()/2)+(text_sound.get_charheight()*5)));
+    text_sound.set_position(-1.0, wh()-((text_sound.get_charheight()/2)+(text_sound.get_charheight()*7)));
     text_sound.render(ink);
 
-    text_music.set_position(-1.0, wh()-((text_music.get_charheight()/2)+(text_music.get_charheight()*6)));
+    text_music.set_position(-1.0, wh()-((text_music.get_charheight()/2)+(text_music.get_charheight()*8)));
     text_music.render(ink);
 
 
@@ -1012,6 +1020,7 @@ Stats::resize(const int nwidth, const int nheight)
     text_music.resize(nwidth, nheight);
     text_sound.resize(nwidth, nheight);
     text_copyright.resize(nwidth, nheight);
+    text_intro.resize(nwidth, nheight);
     menu->resize(nwidth, nheight);
 } // Stats::resize
     

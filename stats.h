@@ -1,6 +1,6 @@
 //      MAGNETAR
 //      Copyright (c) 1993-2005 by Mark B. Hanson (mbh@panix.com).
-//      Copyright (C) 2013 Ben Asselstine
+//      Copyright (C) 2013, 2014 Ben Asselstine
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -48,6 +48,7 @@ public:
     Text text_www;
     Text text_primary;
     Text text_secondary;
+    Text text_intro;
     Text text_tertiary;
     Text text_quaternary;
     Text text_p1;
