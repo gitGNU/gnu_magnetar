@@ -1,6 +1,6 @@
 //      MAGNETAR
 //      Copyright (c) 1993-2005 by Mark B. Hanson (mbh@panix.com).
-//      Copyright (C) 2013 Ben Asselstine
+//      Copyright (C) 2013, 2014 Ben Asselstine
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -360,7 +360,9 @@ Castle::reset()
   resting_time = secs * 1000000;
   secs = get_staying_time();
   staying_time = secs * 1000000;
-  if (!game || game->state == STATE_ATTRACT )
+  if (!game || 
+      game->state == STATE_ATTRACT  || game->state == STATE_HIGH_SCORES ||
+      game->state == STATE_COPYRIGHT)
     {
       if (reward_type == 2 || reward_type == 3 || reward_type == 4)
         reward_type = 1;
