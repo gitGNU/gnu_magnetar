@@ -1,6 +1,6 @@
 //      MAGNETAR
-//      Copyright (c) 1993-2005 by Mark B. Hanson (mbh@panix.com).
-//      Copyright (C) 2013 Ben Asselstine
+//      Copyright (c) 1993-2005, 2014 by Mark B. Hanson (mbh@panix.com).
+//      Copyright (C) 2013, 2014 Ben Asselstine
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -44,7 +44,7 @@ typedef enum _gc_token {
     GC_TOKEN_COUNT
 } gc_token;
 
-extern void init_gc(bool);
+extern void init_gc(int);
 extern void free_all_gcs(void);
 extern GC fetch_gc(const gc_token);
 const gc_token lookup_gc(GC gc);

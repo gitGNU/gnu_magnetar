@@ -1,6 +1,6 @@
 //      MAGNETAR
-//      Copyright (c) 1993-2005, 2013 by Mark B. Hanson (mbh@panix.com).
-//      Copyright (C) 2013 Ben Asselstine
+//      Copyright (c) 1993-2005, 2013, 2014 by Mark B. Hanson (mbh@panix.com).
+//      Copyright (C) 2013, 2014 Ben Asselstine
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -1081,7 +1081,7 @@ main(const int argc, char **const argv)
 
 
   //XSetWindowAttributes atts;
-  init_gc(args.bw);
+  init_gc(args.colour);
 
   game_window = XCreateSimpleWindow(display,
                                     RootWindow(display, screen_number),

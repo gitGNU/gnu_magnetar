@@ -1,6 +1,6 @@
 //      MAGNETAR
-//      Copyright (c) 1993-2005 by Mark B. Hanson (mbh@panix.com).
-//      Copyright (C) 2013 Ben Asselstine
+//      Copyright (c) 1993-2005, 2014 by Mark B. Hanson (mbh@panix.com).
+//      Copyright (C) 2013, 2014 Ben Asselstine
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -53,7 +53,7 @@ Args::init(struct info *const a)
     a->y = -1;	// no specified position
     a->percent = 87;
     a->nopause = false;
-    a->bw = false;
+    a->colour= 0;
     a->quiet = false;
     a->free_play = false;
     a->stats = false;
@@ -120,6 +120,7 @@ Pilot a spaceship through asteroid fields near a magnetar.\n\
       --aspect INT/INT    change the aspect ratio.\n\
   -f, --fps FLOAT         try to draw this many frames per second (default %.0f)\n\
       --greyscale         don't draw colour, only draw in variations of grey\n\
+      --monochrome        don't draw colour, only draw in black and white\n\
       --nopause           don't pause when the cursor leaves the window\n\
   -p, --percent INT       percent of the display the window should take up\n\
       --stats             put game statistics in ~/magnetar-stats-p[1-2].csv\n\
@@ -577,7 +578,9 @@ Args::set(struct info *const a, const int argc,
 	} else if (!strcmp(argv[i], "--nopause")) {
 	    a->nopause = true;
 	} else if (!strcmp(argv[i], "--greyscale")) {
-	    a->bw = true;
+	    a->colour = 1;
+	} else if (!strcmp(argv[i], "--monochrome")) {
+	    a->colour = 2;
 	} else {
 	    fprintf(stderr, "%s: unknown argument `%s'!\n", program, argv[i]);
 	    exit(1);

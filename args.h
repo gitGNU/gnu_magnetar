@@ -1,6 +1,6 @@
 //      MAGNETAR
-//      Copyright (c) 1993-2005 by Mark B. Hanson (mbh@panix.com).
-//      Copyright (C) 2013 Ben Asselstine
+//      Copyright (c) 1993-2005, 2014 by Mark B. Hanson (mbh@panix.com).
+//      Copyright (C) 2013, 2014 Ben Asselstine
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -47,7 +47,7 @@ struct info {
     bool nopause;	// don't pause when the cursor leaves the window
     bool quiet;         // don't play any sounds
     bool quiet_attract; // don't play sounds during attract mode
-    bool bw;		// black and white display
+    int colour;		// colour, greyscale display, or black and white
     bool stats;         // save stats to a file.
     bool free_play;     // don't require credits
     unsigned int lives; // the number of lives a player starts with

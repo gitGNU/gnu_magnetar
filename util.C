@@ -1,5 +1,5 @@
 //      MAGNETAR
-//      Copyright (c) 1993-2005 by Mark B. Hanson (mbh@panix.com).
+//      Copyright (c) 1993-2005, 2014 by Mark B. Hanson (mbh@panix.com).
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -70,9 +70,9 @@ alloc_gc(const char *const colorname, const int width)
 
 
 void
-init_gc(bool monochrome)
+init_gc(int colortype)
 {
-  if (monochrome) 
+  if (colortype == 1) 
     {
       gc_list[GC_BLACK] = alloc_gc("black", 2);
 
@@ -93,7 +93,7 @@ init_gc(bool monochrome)
       gc_list[GC_BRIGHT_BLUE] = alloc_gc("grey95", 2);
       gc_list[GC_DULL_BLUE] = alloc_gc("grey90", 2);
     }
-  else
+  else if (colortype == 0)
     {
       gc_list[GC_BLACK] = alloc_gc("black", 2);
 
@@ -113,6 +113,27 @@ init_gc(bool monochrome)
 
       gc_list[GC_BRIGHT_BLUE] = alloc_gc("lightskyblue", 2);
       gc_list[GC_DULL_BLUE] = alloc_gc("dodgerblue", 2);
+    }
+  else if (colortype == 2) 
+    {
+      gc_list[GC_BLACK] = alloc_gc("black", 2);
+
+      gc_list[GC_BRIGHT_RED] = alloc_gc("white", 2);
+      gc_list[GC_DULL_RED] = alloc_gc("white", 2);
+
+      gc_list[GC_BRIGHT_ORANGE] = alloc_gc("white", 2);
+      gc_list[GC_DULL_ORANGE] = alloc_gc("white", 2);
+
+      gc_list[GC_BRIGHT_YELLOW] = alloc_gc("white", 2);
+      gc_list[GC_DULL_YELLOW] = alloc_gc("white", 2);
+
+      gc_list[GC_BRIGHT_GREY] = alloc_gc("white", 2);
+      gc_list[GC_DULL_GREY] = alloc_gc("white", 2);
+
+      gc_list[GC_GREEN] = alloc_gc("white", 2);
+
+      gc_list[GC_BRIGHT_BLUE] = alloc_gc("white", 2);
+      gc_list[GC_DULL_BLUE] = alloc_gc("white", 2);
     }
     gcs = new GC*[display_height()];
   for(int i = 0; i < display_height(); ++i)
