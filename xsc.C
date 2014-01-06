@@ -1088,8 +1088,8 @@ main(const int argc, char **const argv)
                                     0, 0,
                                     ww(), wh(),
                                     0,
-                                    WhitePixel(display, screen_number),
-                                    BlackPixel(display, screen_number));
+                                    args.colour != 3 ? WhitePixel(display, screen_number) : BlackPixel(display, screen_number),
+                                    args.colour != 3 ? BlackPixel(display, screen_number) : WhitePixel(display, screen_number));
 
   if (XStringListToTextProperty(&window_title, 1, &windowName) == 0) {
     fprintf(stderr, "%s: structure allocation for windowName failed.\n",

@@ -138,6 +138,27 @@ init_gc(int colortype)
       gc_list[GC_BRIGHT_BLUE] = alloc_gc("white", 2);
       gc_list[GC_DULL_BLUE] = alloc_gc("white", 2);
     }
+  else if (colortype == 3) 
+    {
+      gc_list[GC_BLACK] = alloc_gc("white", 2);
+
+      gc_list[GC_BRIGHT_RED] = alloc_gc("black", 2);
+      gc_list[GC_DULL_RED] = alloc_gc("black", 2);
+
+      gc_list[GC_BRIGHT_ORANGE] = alloc_gc("black", 2);
+      gc_list[GC_DULL_ORANGE] = alloc_gc("black", 2);
+
+      gc_list[GC_BRIGHT_YELLOW] = alloc_gc("black", 2);
+      gc_list[GC_DULL_YELLOW] = alloc_gc("black", 2);
+
+      gc_list[GC_BRIGHT_GREY] = alloc_gc("black", 2);
+      gc_list[GC_DULL_GREY] = alloc_gc("black", 2);
+
+      gc_list[GC_GREEN] = alloc_gc("black", 2);
+
+      gc_list[GC_BRIGHT_BLUE] = alloc_gc("black", 2);
+      gc_list[GC_DULL_BLUE] = alloc_gc("black", 2);
+    }
     gcs = new GC*[display_height()];
   for(int i = 0; i < display_height(); ++i)
         gcs[i] = new GC[display_width()];
@@ -232,9 +253,9 @@ void drawvertline(Window w, int x, int y1, int y2, GC c, bool bright)
           //XDrawPoint (display, w, bright_gcs[ndy][nx], nx, ndy);
         //else
           //XDrawPoint (display, w, gcs[ndy][nx], nx, ndy);
-        if (craziness==1 && colour_type != 2)
+        if (craziness==1 && colour_type < 2)
           XDrawPoint (display, w, gc_list[1+(rand()%(4))], nx, ndy);
-        else if (craziness==2 && colour_type != 2)
+        else if (craziness==2 && colour_type < 2)
           XDrawPoint (display, w, gc_list[7+(rand()%(5))], nx, ndy);
         else
           {
@@ -273,9 +294,9 @@ void _XFillArc(Display *display, Window window, GC thisgc, int x, int y,
       XFillArc(display, window, thisgc, x, y, xsize, ysize, b, d);
     else
       {
-      if (craziness==1 && colour_type != 2)
+      if (craziness==1 && colour_type < 2)
         XFillArc(display, window, gc_list[1+(rand()%(4))], x, y, xsize, ysize, b, d);
-      else if (craziness==2 && colour_type != 2)
+      else if (craziness==2 && colour_type < 2)
         XFillArc(display, window, gc_list[7+(rand()%(5))], x, y, xsize, ysize, b, d);
       else
       XFillArc(display, window, thisgc, x, y, xsize, ysize, b, d);
