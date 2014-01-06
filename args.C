@@ -120,7 +120,7 @@ Pilot a spaceship through asteroid fields near a magnetar.\n\
       --aspect INT/INT    change the aspect ratio.\n\
   -f, --fps FLOAT         try to draw this many frames per second (default %.0f)\n\
       --greyscale         don't draw colour, only draw in variations of grey\n\
-      --inverted-monochrome don't draw colour, only draw in white and black\n\
+      --inverted-mono     don't draw colour, only draw in white and black\n\
       --monochrome        don't draw colour, only draw in black and white\n\
       --nopause           don't pause when the cursor leaves the window\n\
   -p, --percent INT       percent of the display the window should take up\n\
@@ -582,7 +582,7 @@ Args::set(struct info *const a, const int argc,
 	    a->colour = 1;
 	} else if (!strcmp(argv[i], "--monochrome")) {
 	    a->colour = 2;
-	} else if (!strcmp(argv[i], "--inverted-monochrome")) {
+	} else if (!strcmp(argv[i], "--inverted-mono")) {
 	    a->colour = 3;
 	} else {
 	    fprintf(stderr, "%s: unknown argument `%s'!\n", program, argv[i]);
