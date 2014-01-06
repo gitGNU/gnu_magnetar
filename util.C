@@ -28,6 +28,7 @@
 GC**                    gcs;
 GC**                    bright_gcs;
 int craziness;
+int colour_type;
 namespace {
 
 GC gc_list[GC_TOKEN_COUNT];
@@ -73,6 +74,7 @@ alloc_gc(const char *const colorname, const int width)
 void
 init_gc(int colortype)
 {
+  colour_type = colortype;
   if (colortype == 1) 
     {
       gc_list[GC_BLACK] = alloc_gc("black", 2);
@@ -230,9 +232,9 @@ void drawvertline(Window w, int x, int y1, int y2, GC c, bool bright)
           //XDrawPoint (display, w, bright_gcs[ndy][nx], nx, ndy);
         //else
           //XDrawPoint (display, w, gcs[ndy][nx], nx, ndy);
-        if (craziness==1)
+        if (craziness==1 && colour_type != 2)
           XDrawPoint (display, w, gc_list[1+(rand()%(4))], nx, ndy);
-        else if (craziness==2)
+        else if (craziness==2 && colour_type != 2)
           XDrawPoint (display, w, gc_list[7+(rand()%(5))], nx, ndy);
         else
           {
@@ -271,9 +273,9 @@ void _XFillArc(Display *display, Window window, GC thisgc, int x, int y,
       XFillArc(display, window, thisgc, x, y, xsize, ysize, b, d);
     else
       {
-      if (craziness==1)
+      if (craziness==1 && colour_type != 2)
         XFillArc(display, window, gc_list[1+(rand()%(4))], x, y, xsize, ysize, b, d);
-      else if (craziness==2)
+      else if (craziness==2 && colour_type != 2)
         XFillArc(display, window, gc_list[7+(rand()%(5))], x, y, xsize, ysize, b, d);
       else
       XFillArc(display, window, thisgc, x, y, xsize, ysize, b, d);
