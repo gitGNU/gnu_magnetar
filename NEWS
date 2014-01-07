@@ -2,5 +2,6 @@ version 0.0.1. December 2013.
 
 version 0.0.2.
 show the copyright screen when we hit fire in the attract screen
-added --monochrome command line option
+added --monochrome and --inverted-mono command line options
+added support for changing volume levels in test mode
 
