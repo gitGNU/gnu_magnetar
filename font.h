@@ -1,6 +1,6 @@
 //      MAGNETAR
 //      Copyright (c) 1993-2005 by Mark B. Hanson (mbh@panix.com).
-//      Copyright (C) 2013 Ben Asselstine
+//      Copyright (C) 2013, 2014 Ben Asselstine
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -30,6 +30,7 @@ const int font_colon_offset = 68;
 const int font_upper_offset = 11;
 const int font_lower_offset = 37;
 const int font_copyright_offset = 63;
+const int font_hyphen_offset = 69;
 const double font_aspect_ratio = 19.0/27.0; //width (-9 to 9) to height (-13 to 13)
 
 extern const struct coords *const cinematronics_points[];

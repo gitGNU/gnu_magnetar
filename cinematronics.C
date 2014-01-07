@@ -1,5 +1,5 @@
 //      MAGNETAR
-//      Copyright (C) 2013 Ben Asselstine
+//      Copyright (C) 2013, 2014 Ben Asselstine
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -495,6 +495,9 @@ const coords x717[] = {
     { -0.073,  0.11  }, { -0.063,  0.11  },
     { -0.063,  0.10  }, { -0.063,  0.11  },
 };
+const coords x718[] = {
+    {  0.08,  0.00 }, { -0.08,  0.00 },
+};
 
 } // namespace
 
@@ -525,6 +528,7 @@ const coords *const cinematronics_points[] = {
     x715,                               // /
     x716,                               // .
     x717,                               // :
+    x718,                               // -
 };
 
 const int cinematronics_count[] = {
@@ -601,4 +605,5 @@ const int cinematronics_count[] = {
     sizeof(x715) / sizeof(coords),
     sizeof(x716) / sizeof(coords),
     sizeof(x717) / sizeof(coords),
+    sizeof(x718) / sizeof(coords),
 };

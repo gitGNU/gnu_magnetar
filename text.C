@@ -1,6 +1,6 @@
 //      MAGNETAR
 //      Copyright (c) 1993-2005, 2013 by Mark B. Hanson (mbh@panix.com).
-//      Copyright (C) 2013 Ben Asselstine
+//      Copyright (C) 2013, 2014 Ben Asselstine
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -79,7 +79,7 @@ double Text::calculate_width()
         (message[i] >= 'A' && message[i] <= 'Z') ||
         (message[i] >= 'a' && message[i] <= 'z') ||
         message[i] == ' ' || message[i] == '>' || message[i] == '<' ||
-        message[i] == '/') {
+        message[i] == '/' || message[i] == '-'){
       width += get_charwidth();
     } else if (message[i] == '|' || message[i] == '.' || message[i] == ':') {
       width += get_charwidth() / 3.0;
@@ -124,6 +124,8 @@ Text::render(const bool ink)
 	    offset = font_copyright_offset+2;
 	} else if (message[i] == '/') {
 	    offset = font_copyright_offset+3;
+	} else if (message[i] == '-') {
+	    offset = font_hyphen_offset;
 	} else if (message[i] == ' ') {
             set_x(get_x() + width);
 	    continue;

@@ -60,6 +60,7 @@ public:
     Text text_energy_bar;
     Text text_initials[3];
     Text text_initial_boxes[3];
+    Text text_other;
     char initials[4];
     unsigned int current_initial;
     unsigned int score;

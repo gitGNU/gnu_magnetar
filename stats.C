@@ -59,6 +59,7 @@ Stats::Stats(Ship *s, Game *g)
     text_initial_boxes[2].set_window(game_window);
     text_copyright.set_window(game_window);
     text_intro.set_window(game_window);
+    text_other.set_window(game_window);
 
     set_scale(8.0);
     text_primary.set_scale(scale);
@@ -72,6 +73,7 @@ Stats::Stats(Ship *s, Game *g)
     text_music.set_scale(scale*1.5);
     text_sound.set_scale(scale*1.5);
     text_www.set_scale(scale*1.5);
+    text_other.set_scale(scale*1.5);
     text_mines_to_go.set_scale(scale*1.1);
     text_lives_left.set_scale(scale*1.1);
     text_energy_bar.set_scale(scale*1.0);
@@ -107,6 +109,10 @@ Stats::Stats(Ship *s, Game *g)
     text_initial_boxes[2].set_gc(fetch_gc(GC_BRIGHT_RED));
     text_copyright.set_gc(fetch_gc(GC_BRIGHT_RED));
     text_intro.set_gc(fetch_gc(GC_BRIGHT_RED));
+    text_other.set_gc(fetch_gc(GC_DULL_BLUE));
+    text_sound.set_gc(fetch_gc(GC_DULL_BLUE));
+    text_music.set_gc(fetch_gc(GC_DULL_BLUE));
+    text_www.set_gc(fetch_gc(GC_DULL_BLUE));
 
     set_theta(0.0);
     reset();
@@ -832,6 +838,7 @@ Stats::render(const bool ink)
       text_quaternary.set_message("");
       text_lives_left.set_message("");
       text_intro.set_message("");
+      text_other.set_message("");
       for (int i = 0; i < 3; i++)
         {
           text_initials[i].set_message("");
@@ -843,13 +850,14 @@ Stats::render(const bool ink)
           case STATE_COPYRIGHT:
             text_copyright.set_message("MAGNETAR");
             text_intro.set_message("your ship is at the mercy of the");
+            text_other.set_message("Some code: Mark B. Hanson");
             text_music.set_message("Music: Andrey Avkhimovich");
             text_sound.set_message("Some Sounds: Stephen M. Cameron");
             text_www.set_message("http://magnetar.nongnu.org");
             text_secondary.set_message("with a name from 1992");
             text_primary.set_message("the 1979 arcade game");
             text_tertiary.set_message("Licensed under the gpl");
-            text_quaternary.set_message("@ 2013 Ben Asselstine");
+            text_quaternary.set_message("@ 2013-2014 Ben Asselstine");
             break;
           case STATE_TEST:
             text_primary.set_message("TEST MODE");
@@ -1149,8 +1157,6 @@ Stats::render(const bool ink)
     text_secondary.set_position(-1.0, (text_primary.get_charheight()/2) + (text_primary.get_charheight()));
     text_secondary.render(ink);
 
-    text_intro.set_position(-1.0, (text_primary.get_charheight()/2) + (text_primary.get_charheight()*9));
-    text_intro.render(ink);
 
     text_tertiary.set_position(-1.0, wh()-((text_tertiary.get_charheight()/2+text_tertiary.get_charheight())));
     text_tertiary.render(ink);
@@ -1167,7 +1173,8 @@ Stats::render(const bool ink)
     text_music.set_position(-1.0, wh()-((text_music.get_charheight()/2)+(text_music.get_charheight()*8)));
     text_music.render(ink);
 
-
+    text_other.set_position(-1.0, wh()-((text_other.get_charheight()/2)+(text_other.get_charheight()*9)));
+    text_other.render(ink);
     // display the p1 and p2 score (during high score state)
     text_p1.set_position((ww2() + ((text_p1.get_size()/text_p1.get_scale())/ 2.0) - (text_p1.calculate_width() / 2.0))/4.0, 
                          (wh()-(text_p1.get_charheight()*1.5)) / 2);
@@ -1216,6 +1223,9 @@ Stats::render(const bool ink)
     text_copyright.set_position(-1, wh2()-(text_copyright.get_charheight()/2));
     text_copyright.render(ink);
 
+    text_intro.set_position(-1.0, text_copyright.get_y() - text_intro.get_charheight());
+    text_intro.render(ink);
+
     if (game->state == STATE_TEST)
       {
         menu->set_positions();
@@ -1258,6 +1268,7 @@ Stats::resize(const int nwidth, const int nheight)
     text_sound.resize(nwidth, nheight);
     text_copyright.resize(nwidth, nheight);
     text_intro.resize(nwidth, nheight);
+    text_other.resize(nwidth, nheight);
     menu->resize(nwidth, nheight);
 } // Stats::resize
     
