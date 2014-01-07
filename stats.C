@@ -130,7 +130,7 @@ void Stats::test_menu()
     m7.set_message("sound test");
     m8.set_message("music loudness");
     m9.set_message("thrust loudness");
-    m10.set_message("effect loudness");
+    m10.set_message("sound loudness");
     m11.set_message("reset high score");
     m12.set_message("restore defaults");
     m13.set_message("finish");
