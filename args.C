@@ -27,6 +27,7 @@
 #include <sys/types.h>
 
 #include "args.h"
+#include "sound.h"
 
 const char *config_dir = "." PACKAGE;
 const char *config_file = "config";
@@ -262,6 +263,15 @@ Args::save(struct info *const a, FILE *fp)
 
   if (a->starting_level != 1)
     fprintf (fp, "starting-level %d\n", a->starting_level);
+
+  if (bonus_volume != 11)
+    fprintf (fp, "bonus-volume %d\n", int(bonus_volume));
+
+  if (thrust_volume != 11)
+    fprintf (fp, "thrust-volume %d\n", int(thrust_volume));
+
+  if (effects_volume != 11)
+    fprintf (fp, "effects-volume %d\n", int(effects_volume));
 }
 
 void
@@ -318,6 +328,42 @@ Args::config_set(struct info *const a, const int argc,
 	    } else {
 		fprintf(stderr, "%s: no argument for `%s'!\n",
 			program, "starting-level");
+		exit(1);
+	    }
+	} else if (!strcmp(argv[i], "bonus-volume")) {
+	    if (++i < argc) {
+		if ((bonus_volume = atof(argv[i])) <= 0) {
+		    fprintf(stderr, "%s: bad argument for `%s'!\n",
+			    program, "bonus-volume");
+		    exit(1);
+		}
+	    } else {
+		fprintf(stderr, "%s: no argument for `%s'!\n",
+			program, "bonus-volume");
+		exit(1);
+	    }
+	} else if (!strcmp(argv[i], "thrust-volume")) {
+	    if (++i < argc) {
+		if ((thrust_volume = atof(argv[i])) <= 0) {
+		    fprintf(stderr, "%s: bad argument for `%s'!\n",
+			    program, "thrust-volume");
+		    exit(1);
+		}
+	    } else {
+		fprintf(stderr, "%s: no argument for `%s'!\n",
+			program, "thrust-volume");
+		exit(1);
+	    }
+	} else if (!strcmp(argv[i], "effects-volume")) {
+	    if (++i < argc) {
+		if ((effects_volume = atof(argv[i])) <= 0) {
+		    fprintf(stderr, "%s: bad argument for `%s'!\n",
+			    program, "effects-volume");
+		    exit(1);
+		}
+	    } else {
+		fprintf(stderr, "%s: no argument for `%s'!\n",
+			program, "effects-volume");
 		exit(1);
 	    }
 	} else if (!strcmp(argv[i], "coins-per-credit")) {

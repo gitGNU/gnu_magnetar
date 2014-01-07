@@ -340,6 +340,8 @@ handle_event(void)
 		    game->ship->fire(game->stats());
 		}
                 else if (game->state == STATE_INITIALS) {
+                  if (game->stats()->completed_entering_initials() == false)
+                    play (SHIP_FIRE_LASER);
                   game->stats()->accept_initial();
                 }
 	    } 

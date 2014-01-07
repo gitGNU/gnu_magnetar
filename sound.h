@@ -1,5 +1,5 @@
 //      MAGNETAR
-//      Copyright (C) 2013 Ben Asselstine
+//      Copyright (C) 2013, 2014 Ben Asselstine
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -53,6 +53,9 @@ void sound_free();
 
 extern bool thrust_sound_on;
 extern bool bonus_sound_on;
+extern double thrust_volume;
+extern double bonus_volume;
+extern double effects_volume;
 
 #endif /* SOUND_H */
 

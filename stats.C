@@ -120,7 +120,7 @@ void Stats::test_menu()
 {
   double ss = 1.1;
     menu = new Menu(30, 60, fetch_gc(GC_DULL_YELLOW), fetch_gc(GC_DULL_BLUE), scale*ss);
-    Text m1, m2, m3, m4 ,m5 ,m6 ,m7 ,m8 ,m9, m10;
+    Text m1, m2, m3, m4 ,m5 ,m6 ,m7 ,m8 ,m9, m10, m11, m12, m13;
     m1.set_message("cocktail mode");
     m2.set_message("coins per credit");
     m3.set_message("extra ship at");
@@ -128,9 +128,12 @@ void Stats::test_menu()
     m5.set_message("sounds");
     m6.set_message("starting stage");
     m7.set_message("sound test");
-    m8.set_message("reset high score");
-    m9.set_message("restore defaults");
-    m10.set_message("finish");
+    m8.set_message("music loudness");
+    m9.set_message("thrust loudness");
+    m10.set_message("effect loudness");
+    m11.set_message("reset high score");
+    m12.set_message("restore defaults");
+    m13.set_message("finish");
 
 
     Menu *cocktail = new Menu(ww2(),60, fetch_gc(GC_DULL_YELLOW), fetch_gc(GC_DULL_BLUE), scale*ss);
@@ -340,9 +343,167 @@ void Stats::test_menu()
     effects->add_entry(effect20);
     effects->set_active(effects->begin()++);
     menu->add_entry(m7, effects);
-    menu->add_entry(m8);
-    menu->add_entry(m9);
-    menu->add_entry(m10);
+    Menu *bonus = new Menu(ww2(),60, fetch_gc(GC_DULL_YELLOW), fetch_gc(GC_DULL_BLUE), scale*ss);
+    Text bonus1, bonus2, bonus3, bonus4, bonus5, bonus6, bonus7, bonus8,
+         bonus9, bonus10, bonus11, bonus12;
+    bonus1.set_message("0");
+    bonus2.set_message("1");
+    bonus3.set_message("2");
+    bonus4.set_message("3");
+    bonus5.set_message("4");
+    bonus6.set_message("5");
+    bonus7.set_message("6");
+    bonus8.set_message("7");
+    bonus9.set_message("8");
+    bonus10.set_message("9");
+    bonus11.set_message("10");
+    bonus12.set_message("11");
+    menu->add_entry(m8, bonus);
+    bonus->add_entry(bonus1);
+    if (bonus_volume == 0.0)
+      bonus->set_active(--bonus->end());
+    bonus->add_entry(bonus2);
+    if (bonus_volume == 1.0)
+      bonus->set_active(--bonus->end());
+    bonus->add_entry(bonus3);
+    if (bonus_volume == 2.0)
+      bonus->set_active(--bonus->end());
+    bonus->add_entry(bonus4);
+    if (bonus_volume == 3.0)
+      bonus->set_active(--bonus->end());
+    bonus->add_entry(bonus5);
+    if (bonus_volume == 4.0)
+      bonus->set_active(--bonus->end());
+    bonus->add_entry(bonus6);
+    if (bonus_volume == 5.0)
+      bonus->set_active(--bonus->end());
+    bonus->add_entry(bonus7);
+    if (bonus_volume == 6.0)
+      bonus->set_active(--bonus->end());
+    bonus->add_entry(bonus8);
+    if (bonus_volume == 7.0)
+      bonus->set_active(--bonus->end());
+    bonus->add_entry(bonus9);
+    if (bonus_volume == 8.0)
+      bonus->set_active(--bonus->end());
+    bonus->add_entry(bonus10);
+    if (bonus_volume == 9.0)
+      bonus->set_active(--bonus->end());
+    bonus->add_entry(bonus11);
+    if (bonus_volume == 10.0)
+      bonus->set_active(--bonus->end());
+    bonus->add_entry(bonus12);
+    if (bonus_volume == 11.0)
+      bonus->set_active(--bonus->end());
+
+    Menu *thrust= new Menu(ww2(),60, fetch_gc(GC_DULL_YELLOW), fetch_gc(GC_DULL_BLUE), scale*ss);
+    Text thrus1, thrus2, thrus3, thrus4, thrus5, thrus6, thrus7, thrus8,
+         thrus9, thrus10, thrus11, thrus12;
+    thrus1.set_message("0 ");
+    thrus2.set_message("1 ");
+    thrus3.set_message("2 ");
+    thrus4.set_message("3 ");
+    thrus5.set_message("4 ");
+    thrus6.set_message("5 ");
+    thrus7.set_message("6 ");
+    thrus8.set_message("7 ");
+    thrus9.set_message("8 ");
+    thrus10.set_message("9 ");
+    thrus11.set_message("10 ");
+    thrus12.set_message("11 ");
+    menu->add_entry(m9, thrust);
+    thrust->add_entry(thrus1);
+    if (thrust_volume == 0.0)
+      thrust->set_active(--thrust->end());
+    thrust->add_entry(thrus2);
+    if (thrust_volume == 1.0)
+      thrust->set_active(--thrust->end());
+    thrust->add_entry(thrus3);
+    if (thrust_volume == 2.0)
+      thrust->set_active(--thrust->end());
+    thrust->add_entry(thrus4);
+    if (thrust_volume == 3.0)
+      thrust->set_active(--thrust->end());
+    thrust->add_entry(thrus5);
+    if (thrust_volume == 4.0)
+      thrust->set_active(--thrust->end());
+    thrust->add_entry(thrus6);
+    if (thrust_volume == 5.0)
+      thrust->set_active(--thrust->end());
+    thrust->add_entry(thrus7);
+    if (thrust_volume == 6.0)
+      thrust->set_active(--thrust->end());
+    thrust->add_entry(thrus8);
+    if (thrust_volume == 7.0)
+      thrust->set_active(--thrust->end());
+    thrust->add_entry(thrus9);
+    if (thrust_volume == 8.0)
+      thrust->set_active(--thrust->end());
+    thrust->add_entry(thrus10);
+    if (thrust_volume == 9.0)
+      thrust->set_active(--thrust->end());
+    thrust->add_entry(thrus11);
+    if (thrust_volume == 10.0)
+      thrust->set_active(--thrust->end());
+    thrust->add_entry(thrus12);
+    if (thrust_volume == 11.0)
+      thrust->set_active(--thrust->end());
+
+    Menu *volume = new Menu(ww2(),60, fetch_gc(GC_DULL_YELLOW), fetch_gc(GC_DULL_BLUE), scale*ss);
+    Text vol1, vol2, vol3, vol4, vol5, vol6, vol7, vol8, vol9, vol10, vol11,
+         vol12;
+    vol1.set_message("0  ");
+    vol2.set_message("1  ");
+    vol3.set_message("2  ");
+    vol4.set_message("3  ");
+    vol5.set_message("4  ");
+    vol6.set_message("5  ");
+    vol7.set_message("6  ");
+    vol8.set_message("7  ");
+    vol9.set_message("8  ");
+    vol10.set_message("9  ");
+    vol11.set_message("10  ");
+    vol12.set_message("11  ");
+    menu->add_entry(m10, volume);
+    volume->add_entry(vol1);
+    if (effects_volume == 0.0)
+      volume->set_active(--volume->end());
+    volume->add_entry(vol2);
+    if (effects_volume == 1.0)
+      volume->set_active(--volume->end());
+    volume->add_entry(vol3);
+    if (effects_volume == 2.0)
+      volume->set_active(--volume->end());
+    volume->add_entry(vol4);
+    if (effects_volume == 3.0)
+      volume->set_active(--volume->end());
+    volume->add_entry(vol5);
+    if (effects_volume == 4.0)
+      volume->set_active(--volume->end());
+    volume->add_entry(vol6);
+    if (effects_volume == 5.0)
+      volume->set_active(--volume->end());
+    volume->add_entry(vol7);
+    if (effects_volume == 6.0)
+      volume->set_active(--volume->end());
+    volume->add_entry(vol8);
+    if (effects_volume == 7.0)
+      volume->set_active(--volume->end());
+    volume->add_entry(vol9);
+    if (effects_volume == 8.0)
+      volume->set_active(--volume->end());
+    volume->add_entry(vol10);
+    if (effects_volume == 9.0)
+      volume->set_active(--volume->end());
+    volume->add_entry(vol11);
+    if (effects_volume == 10.0)
+      volume->set_active(--volume->end());
+    volume->add_entry(vol12);
+    if (effects_volume == 11.0)
+      volume->set_active(--volume->end());
+    menu->add_entry(m11);
+    menu->add_entry(m12);
+    menu->add_entry(m13);
     menu->set_active(menu->begin()++);
 }
 
@@ -440,6 +601,82 @@ void Stats::finish_test_mode()
         args.starting_level = 23;
       else if (strcmp((*i).c_str(),"STAGE 24") == 0)
         args.starting_level = 24;
+
+      //bonus music volume
+      else if (strcmp((*i).c_str(), "0") == 0)
+        bonus_volume = 0;
+      else if (strcmp((*i).c_str(), "1") == 0)
+        bonus_volume = 1;
+      else if (strcmp((*i).c_str(), "2") == 0)
+        bonus_volume = 2;
+      else if (strcmp((*i).c_str(), "3") == 0)
+        bonus_volume = 3;
+      else if (strcmp((*i).c_str(), "4") == 0)
+        bonus_volume = 4;
+      else if (strcmp((*i).c_str(), "5") == 0)
+        bonus_volume = 5;
+      else if (strcmp((*i).c_str(), "6") == 0)
+        bonus_volume = 6;
+      else if (strcmp((*i).c_str(), "7") == 0)
+        bonus_volume = 7;
+      else if (strcmp((*i).c_str(), "8") == 0)
+        bonus_volume = 8;
+      else if (strcmp((*i).c_str(), "9") == 0)
+        bonus_volume = 9;
+      else if (strcmp((*i).c_str(), "10") == 0)
+        bonus_volume = 10;
+      else if (strcmp((*i).c_str(), "11") == 0)
+        bonus_volume = 11;
+      //thrust volume
+      else if (strcmp((*i).c_str(), "0 ") == 0)
+        thrust_volume = 0;
+      else if (strcmp((*i).c_str(), "1 ") == 0)
+        thrust_volume = 1;
+      else if (strcmp((*i).c_str(), "2 ") == 0)
+        thrust_volume = 2;
+      else if (strcmp((*i).c_str(), "3 ") == 0)
+        thrust_volume = 3;
+      else if (strcmp((*i).c_str(), "4 ") == 0)
+        thrust_volume = 4;
+      else if (strcmp((*i).c_str(), "5 ") == 0)
+        thrust_volume = 5;
+      else if (strcmp((*i).c_str(), "6 ") == 0)
+        thrust_volume = 6;
+      else if (strcmp((*i).c_str(), "7 ") == 0)
+        thrust_volume = 7;
+      else if (strcmp((*i).c_str(), "8 ") == 0)
+        thrust_volume = 8;
+      else if (strcmp((*i).c_str(), "9 ") == 0)
+        thrust_volume = 9;
+      else if (strcmp((*i).c_str(), "10 ") == 0)
+        thrust_volume = 10;
+      else if (strcmp((*i).c_str(), "11 ") == 0)
+        thrust_volume = 11;
+      //thrust volume
+      else if (strcmp((*i).c_str(), "0  ") == 0)
+        effects_volume = 0;
+      else if (strcmp((*i).c_str(), "1  ") == 0)
+        effects_volume = 1;
+      else if (strcmp((*i).c_str(), "2  ") == 0)
+        effects_volume = 2;
+      else if (strcmp((*i).c_str(), "3  ") == 0)
+        effects_volume = 3;
+      else if (strcmp((*i).c_str(), "4  ") == 0)
+        effects_volume = 4;
+      else if (strcmp((*i).c_str(), "5  ") == 0)
+        effects_volume = 5;
+      else if (strcmp((*i).c_str(), "6  ") == 0)
+        effects_volume = 6;
+      else if (strcmp((*i).c_str(), "7  ") == 0)
+        effects_volume = 7;
+      else if (strcmp((*i).c_str(), "8  ") == 0)
+        effects_volume = 8;
+      else if (strcmp((*i).c_str(), "9  ") == 0)
+        effects_volume = 9;
+      else if (strcmp((*i).c_str(), "10  ") == 0)
+        effects_volume = 10;
+      else if (strcmp((*i).c_str(), "11  ") == 0)
+        effects_volume = 11;
     }
   Args::save(&args);
 }

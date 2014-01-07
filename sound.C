@@ -1,5 +1,5 @@
 //      MAGNETAR
-//      Copyright (C) 2013 Ben Asselstine
+//      Copyright (C) 2013, 2014 Ben Asselstine
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -25,7 +25,10 @@
 
 Mix_Chunk * sounds[MAX_SOUNDS];
 bool thrust_sound_on = false;
+double thrust_volume = 11.0;
 bool bonus_sound_on = false;
+double bonus_volume = 11.0;
+double effects_volume = 11.0;
 
 const char * files[MAX_SOUNDS] = {
 	     "bombexplosion.wav",
@@ -58,6 +61,7 @@ void play(int snd)
     return;
   if (args.quiet_attract && game->state == STATE_ATTRACT)
     return;
+  Mix_Volume (-1, effects_volume * (float)(128.0/11.0));
   Mix_PlayChannel(-1, sounds[snd], 0);
 }
 
@@ -70,6 +74,7 @@ void thrust_sound(bool on)
   thrust_sound_on = on;
   if (on)
     {
+      Mix_VolumeMusic((float)thrust_volume * (float)(128.0/11.0));
       if (Mix_PausedMusic())
         Mix_ResumeMusic();
       else
@@ -88,6 +93,7 @@ void bonus_sound(bool on)
   bonus_sound_on = on;
   if (on)
     {
+      Mix_VolumeMusic((float)bonus_volume * (float)(128.0/11.0));
       Mix_FadeInMusic(bonus, 1, 0);
     }
   else
