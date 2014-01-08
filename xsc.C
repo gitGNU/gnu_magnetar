@@ -362,14 +362,15 @@ handle_event(void)
               game->addCoin();
 		if (game->state == STATE_HIGH_SCORES ||
                     game->state == STATE_ATTRACT ||
-                    game->state == STATE_PRESS_START) {
+                    game->state == STATE_PRESS_START ||
+                    game->state == STATE_COPYRIGHT) {
+                    game->stats()->erase();
                     game->state = STATE_PRESS_START;
                     game->king->erase();
                     game->queen->erase();
                     game->castle->erase();
                     game->ship->erase();
                     game->minefield->erase();
-                    game->stats()->erase();
                     light_starfield->erase();
                     light_starfield->draw();
                     game->stats()->erase();
