@@ -118,7 +118,7 @@ Pilot a spaceship through asteroid fields near a magnetar.\n\
       --quit KEYCODE      change the keycode which ends the game\n\
       --test KEYCODE      change the keycode which starts the test mode\n\
       --two KEYCODE       change the keycode which starts a 2 player game\n\
-      --aspect INT/INT    change the aspect ratio.\n\
+      --aspect INT/INT    change the aspect ratio\n\
   -f, --fps FLOAT         try to draw this many frames per second (default %.0f)\n\
       --greyscale         don't draw colour, only draw in variations of grey\n\
       --inverted-mono     don't draw colour, only draw in white and black\n\
