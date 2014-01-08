@@ -381,6 +381,8 @@ handle_event(void)
 	    }
             if (ks == args.one && args.free_play && (game->state == STATE_HIGH_SCORES || game->state == STATE_ATTRACT || game->state == STATE_PRESS_START))
               {
+              if (game->castle->alive())
+                game->castle->zap();
               game->stats()->erase();
               game->king->erase();
               game->queen->erase();
@@ -390,6 +392,8 @@ handle_event(void)
               }
             if (ks == args.two && args.free_play && (game->state == STATE_HIGH_SCORES || game->state == STATE_ATTRACT || game->state == STATE_PRESS_START))
               {
+              if (game->castle->alive())
+                game->castle->zap();
               game->stats()->erase();
               game->king->erase();
               game->queen->erase();
@@ -399,6 +403,8 @@ handle_event(void)
               }
 
             if (ks == args.one && (game->state == STATE_PRESS_START  || game->state == STATE_HIGH_SCORES || game->state == STATE_COPYRIGHT) && game->canStart(1)) {
+              if (game->castle->alive())
+                game->castle->zap();
               game->stats()->erase();
               game->king->erase();
               game->queen->erase();
@@ -407,6 +413,8 @@ handle_event(void)
               game->state = STATE_NORMAL;
             }
             if (ks == args.two && (game->state == STATE_PRESS_START || game->state == STATE_HIGH_SCORES || game->state == STATE_COPYRIGHT) && game->canStart(2)) {
+              if (game->castle->alive())
+                game->castle->zap();
               game->stats()->erase();
               game->king->erase();
               game->queen->erase();

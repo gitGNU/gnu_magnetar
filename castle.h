@@ -1,6 +1,6 @@
 //      MAGNETAR   
 //      Copyright (c) 1993-2005 by Mark B. Hanson (mbh@panix.com).
-//      Copyright (C) 2013 Ben Asselstine
+//      Copyright (C) 2013, 2014 Ben Asselstine
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -87,6 +87,7 @@ public:
     void seg_center(const int, /*const*/ double,
 	    double * /*const*/, double * /*const*/);
     void explode(Stats *);
+    void zap(); //don't collapse it.
     void reset();
     void refresh(void) const;
     int get_reward_type() const {return reward_type;};

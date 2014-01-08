@@ -1,5 +1,5 @@
 //      MAGNETAR
-//      Copyright (C) 2013 Ben Asselstine
+//      Copyright (C) 2013, 2014 Ben Asselstine
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -402,8 +402,9 @@ Stages::start_stage(Stage stage)
   castle->refresh();
   minefield->erase();
   minefield->snuff();
-  if (ship->alive() == false)
-    ship->reincarnate();
+  ship->erase();
+  ship->reincarnate();
+  ship->clear_keystrokes();
   ship->reset_energy();
   king->reset();
   if (!king->alive())

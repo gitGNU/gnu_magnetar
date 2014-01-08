@@ -410,6 +410,14 @@ Castle::explode(Stats *stats)
   time_of_death = time_now; 
 } // Castle::explode
 
+void
+Castle::zap()
+{
+  erase();
+  state = CASTLE_STATE_RESTING;
+  time_of_death = time_now; 
+  reset();
+} // Castle::zap
 
 void
 Castle::refresh(void) const
