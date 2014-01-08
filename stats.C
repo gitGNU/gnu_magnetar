@@ -29,6 +29,13 @@
 #include "stages.h"
 #include "buzzer.h"
 
+const int NUM_BOX_POINTS = 8;
+const coords box_points[NUM_BOX_POINTS] = {
+    { -2.62, -0.48 }, { -2.62,  0.48 },
+    { -2.62,  0.48 }, {  2.62,  0.48 },
+    {  2.62,  0.48 }, {  2.62, -0.48 },
+    {  2.62, -0.48 }, { -2.62, -0.48 },
+};
 
 Stats::Stats(Ship *s, Game *g)
 {
@@ -118,6 +125,13 @@ Stats::Stats(Ship *s, Game *g)
     reset();
 
     test_menu();
+
+    points = box_points;
+    num_points = NUM_BOX_POINTS;
+
+    xpoints = new XPoint[num_points];
+    Tthing::set_xpoints();
+
 } // Stats::Stats
 
 
@@ -820,6 +834,7 @@ Stats::render(const bool ink)
       char buf[256];
       static char scorestr[20 + 1];	// 64 bits worth + terminator
 
+      Tthing::set_xpoints();
       last_score = score;
 
       text_copyright.set_message("");
@@ -1226,11 +1241,18 @@ Stats::render(const bool ink)
     text_intro.set_position(-1.0, text_copyright.get_y() - text_intro.get_charheight());
     text_intro.render(ink);
 
+    set_x(ww2());
+    set_y(text_copyright.get_y()+(text_copyright.get_charheight()/20.0));
+    set_gc(fetch_gc(GC_DULL_RED));
     if (game->state == STATE_TEST)
       {
         menu->set_positions();
         menu->render(ink);
       }
+    else if (game->state == STATE_COPYRIGHT)
+      paint_points(ink);
+    else if (game->state == STATE_HIGH_SCORES)
+      paint_points(false);
 
     if (lives >= 0 || !ink) {
 
