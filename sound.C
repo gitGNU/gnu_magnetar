@@ -59,9 +59,10 @@ void play(int snd)
 {
   if (args.quiet)
     return;
-  if (args.quiet_attract && game->state == STATE_ATTRACT)
+  if (args.quiet_attract && game && game->state == STATE_ATTRACT)
     return;
-  Mix_Volume (-1, effects_volume * (float)(128.0/11.0));
+  double foo = effects_volume * (float)(128.0/11.0);
+  Mix_Volume (-1,  int(foo));
   Mix_PlayChannel(-1, sounds[snd], 0);
 }
 
@@ -125,8 +126,8 @@ void repeat_bonus()
 
 void sound_init()
 {
-  if (args.quiet)
-    return;
+  //if (args.quiet)
+    //return;
   SDL_Init(SDL_INIT_AUDIO);
   Mix_OpenAudio(44100, AUDIO_S16, 2, 1024); 
   for (int i = 0; i < MAX_SOUNDS; i++)

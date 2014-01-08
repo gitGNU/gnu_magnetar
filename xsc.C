@@ -214,10 +214,7 @@ handle_event(void)
                 game->state = STATE_TEST;
                 game->cancel_game_and_go_into_test_mode();
                 game->state = STATE_COPYRIGHT;
-                bool old_quiet = args.quiet;
-                args.quiet = false;
                 play (GAME_START);
-                args.quiet = old_quiet;
                 game->stats()->draw();
               }
             else if (ks == XK_t)
@@ -1063,10 +1060,7 @@ main(const int argc, char **const argv)
 
   Difficulty::init();
 
-  if (!args.quiet)
-    {
-      sound_init();
-    }
+  sound_init();
 
   if ((display = XOpenDisplay(display_name)) == NULL) {
     fprintf(stderr, "%s: cannot connect to X server %s\n",
