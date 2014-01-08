@@ -2,10 +2,11 @@ version 0.0.1. December 2013.
 
 version 0.0.2.
 show the copyright screen when we hit fire in the attract screen
+also show the copyright screen when the game is powered on
 added --monochrome and --inverted-mono command line options
 added support for changing volume levels in test mode
 fixed bugs:
-in freeplay, now resetting ship at game start so that it isn't moving.
+in freeplay, now resetting ship to be stationary and at the center of the screen at game start.
 now resetting bonus at game start so it doesn't persist from attract screen.
 now not crashing when we start a game on `quiet' and view the copyright screen.
 
