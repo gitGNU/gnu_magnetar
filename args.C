@@ -264,7 +264,7 @@ Args::save(struct info *const a, FILE *fp)
   if (a->starting_level != 1)
     fprintf (fp, "starting-level %d\n", a->starting_level);
 
-  if (bonus_volume != 11)
+  if (bonus_volume != 4)
     fprintf (fp, "bonus-volume %d\n", int(bonus_volume));
 
   if (thrust_volume != 11)

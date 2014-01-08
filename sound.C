@@ -27,7 +27,7 @@ Mix_Chunk * sounds[MAX_SOUNDS];
 bool thrust_sound_on = false;
 double thrust_volume = 11.0;
 bool bonus_sound_on = false;
-double bonus_volume = 11.0;
+double bonus_volume = 4.0;
 double effects_volume = 11.0;
 
 const char * files[MAX_SOUNDS] = {
