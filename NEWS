@@ -7,5 +7,6 @@ added support for changing volume levels in test mode
 fixed bugs:
 in freeplay, now resetting ship at game start so that it isn't moving.
 now resetting bonus at game start so it doesn't persist from attract screen.
+now not crashing when we start a game on `quiet' and view the copyright screen.
 
 
