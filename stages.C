@@ -403,7 +403,11 @@ Stages::start_stage(Stage stage)
   minefield->erase();
   minefield->snuff();
   ship->erase();
-  ship->reincarnate();
+  if (ship->alive() == false)
+    ship->reincarnate();
+  else if (stage.get_id() == 1)
+    ship->reincarnate();
+
   ship->clear_keystrokes();
   ship->reset_energy();
   king->reset();

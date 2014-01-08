@@ -219,6 +219,7 @@ handle_event(void)
               }
             else if (ks == XK_t)
               {
+                game->stats()->erase();
                 game->state = STATE_TEST;
                 game->cancel_game_and_go_into_test_mode();
                 game->stats()->menu->update();
@@ -1155,7 +1156,8 @@ main(const int argc, char **const argv)
     }
 
   game = new Game();
-  game->state = STATE_ATTRACT;
+  game->cancel_game_and_go_into_test_mode();
+  game->state = STATE_COPYRIGHT;
   light_starfield = new Starfield(11, true);
   stages = new Stages(game->king, game->queen, game->minefield, game->castle, game->ship, light_starfield, game);
 
@@ -1187,12 +1189,10 @@ main(const int argc, char **const argv)
     snooze();
     if (first)
       {
-        //kick it off.
-  game->minefield->reset(stages->get_stage().get_max_mines(),stages->get_stage().get_mines_at_a_time(), stages->get_stage().get_magnetic_mine_percent());
-  game->minefield->set_drop_zones(stages->get_stage().get_drop_zones());
-  game->ship->reincarnate();
+        play (STAGE_START);
         first = false;
       }
+
   }
 
   quit(EXIT_FAILURE);

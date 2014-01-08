@@ -82,7 +82,10 @@ void thrust_sound(bool on)
         Mix_FadeInMusic(thrust, 1, 0);
     }
   else
-    Mix_PauseMusic();
+    {
+      Mix_FadeInMusic(thrust, 1, 0);
+      Mix_PauseMusic();
+    }
 }
 
 void bonus_sound(bool on)
