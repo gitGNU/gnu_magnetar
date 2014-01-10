@@ -76,23 +76,6 @@ bonus.wav comes from http://www.jamendo.com/en/track/773634/born-to-play
 The song is by  Andrey Avkhimovich.  Licensed under a Creative Commons Attribution 3.0 license.
 
 
-SVG Images:
-
-The font used in the SVG Images is AMCAP ETERNAL, by The Fontry.
-http://thefontry.com/americancaptain
-
-magnetar-cpo.svg is based on a cabaret Asteroids layout (1979).  The arrows are inverted, and the text on the right-hand side is unique to magnetar.  I think it is different enough to represent an entirely new work.
-Based on the file found here: http://arcadeartlibrary.com/arcade_art/details.php?image_id=1498
-
-magnetar-side-art.svg is based on a Mad Planets layout (1983).  There are fewer arrows on this version than on a Mad Planets, and they are white.  I think it is different enough to represent an entirely new work.
-Based on the adobe illustrator file found here: http://arcadeartlibrary.com/arcade_art/details.php?image_id=816
-
-magnetar-marquee.svg is based on a monochrome version of the Asteroids marquee.  The top left of this marquee is taken from the Asteroids marquee and mirrored.  I think it is different enough to represent an entirely new work.
-Based on the svg file found here: http://timbartlett.net/downloads/asteroidsmarquee-BW-vectors.svg
-
-
-If any of svg imagery links fail to work, they have been backed up here:
-https://archive.org/details/magnetar-source-imagery
 
 Setting up the game in a cabinet
 
@@ -116,6 +99,9 @@ The KE18 by Hagstrom Electronics has more than enough inputs for this game.
 http://arcadecontrols.com/arcade_input.shtml#KE18-KE24
 But perhaps the KE24-FAST is better.  $100 USD.
 Watch out that you don't get a keyboard card that has ghosting.  where if two buttons are pressed at once, one of them is cancelled out.
+
+Cabinet art for Magnetar can be found at:
+https://archive.org/details/magnetar-source-imagery
 
 
 Aspect Ratios Matter
