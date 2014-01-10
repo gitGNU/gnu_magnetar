@@ -91,6 +91,9 @@ magnetar-marquee.svg is based on a monochrome version of the Asteroids marquee. 
 Based on the svg file found here: http://timbartlett.net/downloads/asteroidsmarquee-BW-vectors.svg
 
 
+If any of svg imagery links fail to work, they have been backed up here:
+https://archive.org/details/magnetar-source-imagery
+
 Setting up the game in a cabinet
 
 When this game is installed in a cabinet, it may be helpful to turn the whole screen to account for different orientations of monitors.  here are the commands to turn the display:
