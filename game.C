@@ -235,7 +235,7 @@ void Game::load_high_scores()
         }
       else
         {
-          high_score = 10210;
+          high_score = 19420;
           strcpy (high_score_initials, "MTA");
         }
       free (file);
