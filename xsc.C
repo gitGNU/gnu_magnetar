@@ -631,6 +631,7 @@ change_states()
               game->ship->erase();
               game->nextPlayer();
               stages->start_stage(game->stats()->get_stage());
+              play (STAGE_START);
               game->stats()->clear_various_wave_statistics();
               game->ship->reset_energy(); //this is so we can thrust in prepare mode.
               game->castle->reset();
@@ -644,6 +645,7 @@ change_states()
                 {
                   game->stats()->next_wave();
                   stages->start_stage(game->stats()->get_stage());
+                  play (STAGE_START);
                 }
             }
           return true;
@@ -673,6 +675,7 @@ change_states()
               game->ship->erase();
               game->nextPlayer();
               stages->start_stage(game->stats()->get_stage());
+              play (STAGE_START);
               game->stats()->clear_various_wave_statistics();
               game->castle->reset();
             }
@@ -706,6 +709,7 @@ change_states()
               game->ship->erase();
               game->nextPlayer();
               stages->start_stage(game->stats()->get_stage());
+              play (STAGE_START);
               game->stats()->clear_various_wave_statistics();
               game->castle->reset();
             }
@@ -758,6 +762,7 @@ change_states()
                   game->ship->erase();
                   game->nextPlayer();
                   stages->start_stage(game->stats()->get_stage());
+                  play (STAGE_START);
                   game->stats()->clear_various_wave_statistics();
                   game->castle->reset();
                 }

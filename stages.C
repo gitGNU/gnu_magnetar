@@ -429,9 +429,6 @@ Stages::start_stage(Stage stage)
     queen->show_force_arrow(false);
   else
     queen->show_force_arrow(true);
-
-  if (stage.get_id() != 1)
-    play (STAGE_START);
 }
 
 
