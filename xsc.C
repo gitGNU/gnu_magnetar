@@ -111,7 +111,6 @@ pause_stuff(const bool pause_state)
     sound_pause(pause_state);
 } // :: pause_stuff
 
-
 void
 quit(const int code)
 {
@@ -129,7 +128,8 @@ quit(const int code)
     free_all_gcs();
     XCloseDisplay(display);
 
-    exit(code);
+    if (code >= 0)
+      exit(code);
 } // ::quit
 
 
@@ -465,6 +465,8 @@ handle_event(void)
                   game->ship->thrust(KEY_UP);
 		}
 	    }
+            if (ks == XK_F3)
+              game->reset();
 	}
 	    break;
 	case LeaveNotify:
@@ -1198,6 +1200,8 @@ main(const int argc, char **const argv)
   for (;;) {
     while (handle_event());
     bool do_animation = change_states();
+    if (game->get_reset_flag())
+      break;
     if (game->changed()) {
 	game->stats()->erase();
 	game->stats()->draw();
@@ -1218,5 +1222,9 @@ main(const int argc, char **const argv)
 
   }
 
-  quit(EXIT_FAILURE);
+  bool reset = game->get_reset_flag();
+  quit(-1); //restart the program
+  if (reset)
+    execvp (argv[0], argv);
+  exit (EXIT_FAILURE);
 } // ::main

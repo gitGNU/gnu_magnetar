@@ -40,6 +40,7 @@ Game::Game()
   snprintf (high_score_initials, sizeof (high_score_initials), "AAA");
   load_high_scores();
   pilot = new AutoPilot(this);
+  reset_flag = false;
 } // Game::Game
 
 

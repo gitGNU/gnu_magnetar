@@ -1,4 +1,4 @@
-This file is Copyright (C) 2013 Ben Asselstine, and is licensed under the terms of the GPL version 3, or later.
+This file is Copyright (C) 2013, 2014 Ben Asselstine, and is licensed under the terms of the GPL version 3, or later.
 
 MAGNETAR
 
@@ -28,6 +28,8 @@ The ship's controls are:
 To start the game, add credits with the space bar.
 
 After credits have been inserted, press 1 to start a one player game, or 2 to start a two player game.
+
+Press F3 to reset the game.
 
 
 Origin of Source Code and Media

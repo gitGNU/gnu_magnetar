@@ -1,5 +1,5 @@
 //      MAGNETAR
-//      Copyright (C) 2013 Ben Asselstine
+//      Copyright (C) 2013, 2014 Ben Asselstine
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -54,6 +54,7 @@ private:
     unsigned int coins;
     Player *active;
     Stats *empty;
+    bool reset_flag;
 
 protected:
     void removeAllPlayers();
@@ -95,6 +96,8 @@ public:
     bool is_cw_key (KeySym ks) {return p() ? p()->is_cw_key(ks) : false;};
     bool is_ccw_key (KeySym ks) {return p() ? p()->is_ccw_key(ks) : false;};
     void cancel_game_and_go_into_test_mode();
+    void reset() {reset_flag = true;};
+    bool get_reset_flag() {return reset_flag;};
 };
 
 inline bool
