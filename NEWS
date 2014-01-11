@@ -14,5 +14,5 @@ fixed bugs:
 in freeplay, now resetting ship to be stationary and at the center of the screen at game start.
 now resetting bonus at game start so it doesn't persist from attract screen.
 now not crashing when we start a game on `quiet' and view the copyright screen.
-
+no longer hitting invisible asteroids on challenging stage after a ship dies.
 

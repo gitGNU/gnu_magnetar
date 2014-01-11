@@ -548,10 +548,11 @@ change_states()
     {
       game->stats()->lives++;
       game->stats()->set_died_on_challenging_stage();
-      game->ship->reincarnate();
       int remaining = stages->get_max_mines() - game->get_expired_mines();
       game->stats()->add_expired_mines(remaining, false);
-
+      game->minefield->erase();
+      game->minefield->snuff();
+      game->ship->reincarnate();
       return true;
     }
   else if (game->state == STATE_NORMAL && !game->ship->alive() && game->stats()->lives < 0)
