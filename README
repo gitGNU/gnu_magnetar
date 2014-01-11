@@ -107,3 +107,5 @@ https://archive.org/details/magnetar-source-imagery
 Aspect Ratios Matter
 
 The difficulty of the game changes with a different aspect ratio.  The development of the game has largely happened with a 4:3 aspect ratio, but perhaps a 3:4 aspect ratio is better for an arcade cabinet.
+The speed of the ship is affected by the aspect ratio.  Slow ships will have a harder time on earlier stages.
+The number of energy bars is affected by the width of the screen.  Wider screens provide more points at the end of a stage.
