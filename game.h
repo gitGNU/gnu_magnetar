@@ -46,6 +46,7 @@ enum stats_states {
     STATE_PRESS_START,
     STATE_TEST,
     STATE_COPYRIGHT,
+    STATE_PATTERN,
 };
 
 class Game {
@@ -55,6 +56,7 @@ private:
     Player *active;
     Stats *empty;
     bool reset_flag;
+    bool reset_soon_flag;
 
 protected:
     void removeAllPlayers();
@@ -98,6 +100,8 @@ public:
     void cancel_game_and_go_into_test_mode();
     void reset() {reset_flag = true;};
     bool get_reset_flag() {return reset_flag;};
+    void reset_soon() {reset_soon_flag = true;};
+    bool get_reset_soon_flag() {return reset_soon_flag;};
 };
 
 inline bool

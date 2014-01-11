@@ -41,6 +41,7 @@ Game::Game()
   load_high_scores();
   pilot = new AutoPilot(this);
   reset_flag = false;
+  reset_soon_flag = false;
 } // Game::Game
 
 

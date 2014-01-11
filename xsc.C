@@ -430,6 +430,19 @@ handle_event(void)
             if (ks == args.quit) {
 		quit(EXIT_SUCCESS);
 	    }
+            if (ks == args.reset)
+              {
+                if (game->castle->alive())
+                  game->castle->zap();
+                game->stats()->erase();
+                game->king->erase();
+                game->queen->erase();
+                game->minefield->erase();
+                light_starfield->erase();
+                game->cancel_game_and_go_into_test_mode();
+                game->reset_soon();
+                game->state = STATE_PATTERN;
+              }
 	}
 	    break;
 	case KeyRelease: {
@@ -859,7 +872,8 @@ change_states()
       return false;
     }
 
-    if (game->state == STATE_PAUSED || game->state == STATE_HIGH_SCORES)
+    if (game->state == STATE_PAUSED || game->state == STATE_HIGH_SCORES ||
+        game->state == STATE_PATTERN)
       return false;
 
     return true;
@@ -1218,6 +1232,16 @@ main(const int argc, char **const argv)
       {
         play (STAGE_START);
         first = false;
+      }
+    if (game->get_reset_soon_flag())
+      {
+        for (int i=0; i<=16; i++)  
+          {
+            int cx = i*(ww()-1)/16;  
+            int cy = i*(wh()-1)/16;  
+            _XDrawLine(display, game_window, fetch_gc(GC_BRIGHT_GREY), cx, 0, cx, wh(), false);  
+            _XDrawLine(display, game_window, fetch_gc(GC_BRIGHT_GREY), 0, cy, ww(), cy, false);  
+          }  
       }
 
   }
