@@ -465,7 +465,7 @@ handle_event(void)
                   game->ship->thrust(KEY_UP);
 		}
 	    }
-            if (ks == XK_F3)
+            if (ks == args.reset)
               game->reset();
 	}
 	    break;

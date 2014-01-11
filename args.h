@@ -40,6 +40,7 @@ struct info {
     KeySym one;       	// the key which starts a 1 player game
     KeySym two;	        // the key which starts a 2 player game
     KeySym test;        // the key which starts test mode
+    KeySym reset;       // the key which resets the game
     double fps;		// frames per second
     int x;		// x offset of the window
     int y;		// y offset of the window

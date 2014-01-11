@@ -49,6 +49,7 @@ Args::init(struct info *const a)
     a->one = XK_1;
     a->two = XK_2;
     a->test = XK_t;
+    a->reset = XK_F3;
     a->fps = DEFAULT_FPS;
     a->x = -1;	// no specified position
     a->y = -1;	// no specified position
@@ -116,6 +117,7 @@ Pilot a spaceship through asteroid fields near a magnetar.\n\
       --p2-thrust KEYCODE the key to propel player two's ship forward\n\
       --pause KEYCODE     specify keycode which suspends and resumes the game\n\
       --quit KEYCODE      change the keycode which ends the game\n\
+      --reset KEYCODE     change the keycode which resets the game\n\
       --test KEYCODE      change the keycode which starts the test mode\n\
       --two KEYCODE       change the keycode which starts a 2 player game\n\
       --aspect INT/INT    change the aspect ratio\n\
@@ -514,6 +516,18 @@ Args::set(struct info *const a, const int argc,
 	    } else {
 		fprintf(stderr, "%s: no argument for `%s'!\n",
 			program, "--quit");
+		exit(1);
+	    }
+	} else if (!strcmp(argv[i], "--reset")) {
+	    if (++i < argc) {
+		if ((a->reset = XStringToKeysym(argv[i])) == NoSymbol) {
+		    fprintf(stderr, "%s: cannot convert `%s' to a KeySym!\n",
+			    program, argv[i]);
+		    exit(1);
+		}
+	    } else {
+		fprintf(stderr, "%s: no argument for `%s'!\n",
+			program, "--reset");
 		exit(1);
 	    }
 	} else if (!strcmp(argv[i], "--coin")) {
