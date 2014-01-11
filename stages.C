@@ -429,8 +429,6 @@ Stages::start_stage(Stage stage)
 
   if (stage.get_id() != 1)
     play (STAGE_START);
-  else
-    ship->clear_keystrokes();
 }
 
 
