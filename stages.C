@@ -408,7 +408,6 @@ Stages::start_stage(Stage stage)
   else if (stage.get_id() == 1)
     ship->reincarnate();
 
-  ship->clear_keystrokes();
   ship->reset_energy();
   king->reset();
   if (!king->alive())
@@ -430,6 +429,8 @@ Stages::start_stage(Stage stage)
 
   if (stage.get_id() != 1)
     play (STAGE_START);
+  else
+    ship->clear_keystrokes();
 }
 
 
