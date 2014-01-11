@@ -82,6 +82,7 @@ const double total_elapsed_time_to_show_high_scores = 5.0;
 const double total_elapsed_time_to_enter_initials = 35.0;
 const double total_elapsed_time_to_show_initials = 2.0;
 const double total_elapsed_time_to_show_copyright = 8.0;
+const double total_elapsed_time_to_show_initial_copyright = 2.0;
 
 void
 key_repeat(const bool on)
@@ -541,9 +542,16 @@ change_states()
     }
   else if (game->state == STATE_COPYRIGHT)
     {
+      static bool first = true;
       static double age;
       age += (1.0/args.fps);
-      if (age > total_elapsed_time_to_show_copyright)
+      if (age > total_elapsed_time_to_show_initial_copyright && first)
+        {
+          age = 0.0;
+          game->state = STATE_HIGH_SCORES;
+          first = false;
+        }
+      else if (age > total_elapsed_time_to_show_copyright && !first)
         {
           age = 0.0;
           game->state = STATE_HIGH_SCORES;
