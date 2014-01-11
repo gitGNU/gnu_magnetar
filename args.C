@@ -120,7 +120,7 @@ Pilot a spaceship through asteroid fields near a magnetar.\n\
       --reset KEYCODE     change the keycode which resets the game\n\
       --test KEYCODE      change the keycode which starts the test mode\n\
       --two KEYCODE       change the keycode which starts a 2 player game\n\
-      --aspect INT/INT    change the aspect ratio\n\
+      --aspect INT:INT    change the aspect ratio\n\
   -f, --fps FLOAT         try to draw this many frames per second (default %.0f)\n\
       --greyscale         don't draw colour, only draw in variations of grey\n\
       --inverted-mono     don't draw colour, only draw in white and black\n\
@@ -612,15 +612,21 @@ Args::set(struct info *const a, const int argc,
               int x = 0, y = 0;
               int retval = sscanf (argv[i], "%d/%d", &x, &y);
               if (retval != 2 || x <= 0 || y <= 0) {
-		    fprintf(stderr, "%s: bad argument for `%s'!\n",
-			    program, "--aspect");
-		    exit(1);
+                retval = sscanf (argv[i], "%d:%d", &x, &y);
+                if (retval != 2 || x <= 0 || y <= 0) {
+                  fprintf(stderr, "%s: bad argument for `%s'!\n",
+                          program, "--aspect");
+                  exit(1);
+                } else {
+                  a->aspect_x = x;
+                  a->aspect_y = y;
+                }
               } else {
-                a->aspect_x = x;
-                a->aspect_y = y;
+                  a->aspect_x = x;
+                  a->aspect_y = y;
               }
 
-	    } else {
+              } else {
 		fprintf(stderr, "%s: no argument for `%s'!\n",
 			program, "--aspect");
 		exit(1);
