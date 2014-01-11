@@ -5,7 +5,7 @@ Build dependencies:
   automake autoconf libtool m4 gcc g++ make 
 
 And development packages for:
-  libX11 libXpm libSDL libSDL-mixer
+  libX11 libXpm libXcursor libSDL libSDL-mixer
 
 Building from git:
   $ autoreconf -fis

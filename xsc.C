@@ -25,6 +25,7 @@
 
 #include <X11/Xatom.h>
 #include <X11/xpm.h>
+#include <X11/Xcursor/Xcursor.h>
 #include "icon.xpm"
 
 #include "global.h"
@@ -61,6 +62,8 @@ int             _display_width, _display_height;
 Stages          *stages;
 Game            *game;
 XpmAttributes   xpmattr; //for the xpm icon
+XcursorImage *cursor_image;
+Cursor cursor;
 
 namespace {
 
@@ -120,6 +123,8 @@ quit(const int code)
     delete game;
 
 
+    XFreeCursor (display, cursor);
+    XcursorImageDestroy (cursor_image);
     XDestroyWindow(display, game_window);
     free_all_gcs();
     XCloseDisplay(display);
@@ -1154,6 +1159,10 @@ main(const int argc, char **const argv)
   XIfEvent(display, &event, wait_for_window, (XPointer) game_window);
   XNextEvent(display, &event);
   XSync(display, True);
+
+  cursor_image = XcursorImageCreate (1, 1);
+  cursor = XcursorImageLoadCursor (display, cursor_image);
+  XDefineCursor (display, game_window, cursor);
 
 
   if (args.x != -1 && args.x != -1)

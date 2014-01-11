@@ -67,6 +67,9 @@ AC_CHECK_LIB(X11, XOpenDisplay, ,
 AC_CHECK_LIB(Xpm, XpmReadFileToPixmap, , 
     AC_MSG_ERROR([*** libXpm not found. Check 'config.log' for more details.]),
     $X_EXTRA_LIBS)
+AC_CHECK_LIB(Xcursor, XcursorImageCreate, ,
+    AC_MSG_ERROR([*** libXcursor not found. Check 'config.log' for more details.]),
+    $X_EXTRA_LIBS)
 
 AC_CHECK_LIB(GL, glXChooseVisual, , 
     AC_MSG_ERROR([*** libGL not found. Check 'config.log' for more details.]),
