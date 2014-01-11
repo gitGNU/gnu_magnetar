@@ -3,6 +3,7 @@ version 0.0.1. December 2013.
 version 0.0.2.
 changed the overall difficulty by making asteroids go faster at the start
 the ship now uses more energy when the thruster is burned
+now pressing the F3 key will reset the game
 show the copyright screen when we hit fire in the attract screen
 also show the copyright screen when the game is powered on
 added --monochrome and --inverted-mono command line options
