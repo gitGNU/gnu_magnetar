@@ -408,7 +408,10 @@ Stages::start_stage(Stage stage)
   else if (stage.get_id() == 1)
     ship->reincarnate();
 
-  ship->reset_energy();
+  if (stage.get_challenging_stage())
+    ship->reset_min_energy();
+  else
+    ship->reset_energy();
   king->reset();
   if (!king->alive())
     king->reincarnate();

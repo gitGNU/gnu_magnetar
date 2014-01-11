@@ -271,7 +271,8 @@ Ship::move(Castle *castle, King *king, King *queen, Minefield *minefield, Stats 
 	const double speed = hypot(get_dx(), get_dy());
 	const double max_speed = (max(ww(),wh()) / 2.25) / args.fps;
 
-        lose_energy (1 / args.fps/ 25.0);
+        if (stages->challenge() == false)
+          lose_energy (1 / args.fps/ 25.0);
 	if (speed > max_speed) {
 	    double limit_factor;
             if (impervious)

@@ -97,6 +97,7 @@ public:
     bool get_polarity() const {return polarity;};
     double get_energy(void) {return energy;};
     void reset_energy(void) {energy=1.0;};
+    void reset_min_energy(void) {energy=0.1;};
     void add_energy(double amount);
     double lose_energy(double amount);
     bool has_energy_left() {return get_energy() <= 0.0 ? false : true;};
