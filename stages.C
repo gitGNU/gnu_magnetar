@@ -44,11 +44,12 @@ Stages::Stages(King *k, King *q, Minefield *mf, Castle *c, Ship *s, Starfield *l
   attract.drop(0.05, 0.95);
   empty.drop(0.00, 0.00);
 
-  double ms = 9.1; //mine speed accelerates until stage 16
+  double ms = 9.1-5.0; //mine speed accelerates until stage 16
+  double step = 0.22;
   stages = new std::vector<Stage>();
-  ms -= 0.44;
+  ms -= step;
   Stage stage = Stage(1, 
-                      24+(Random::get()%3)+20, 
+                      24+(Random::get()%3)+30, 
                       ms, 
                       m+8, 
                       0.1, 
@@ -60,9 +61,9 @@ Stages::Stages(King *k, King *q, Minefield *mf, Castle *c, Ship *s, Starfield *l
   stage.drop(0.05, 0.95);
   stages->push_back(stage);
 
-  ms -= 0.44;
+  ms -= step;
   stage = Stage(2, 
-                27+(Random::get()%3)+20, 
+                27+(Random::get()%3)+30, 
                 ms, 
                 m+9.9, 
                 0.1,
@@ -80,10 +81,10 @@ Stages::Stages(King *k, King *q, Minefield *mf, Castle *c, Ship *s, Starfield *l
   stage.drop(0.45, 0.55);
   stages->push_back(stage);
 
-  ms -= 0.44;
+  ms -= step;
   stage = Stage(4, 
                 30+(Random::get()%3)+40, 
-                8.22, 
+                ms,//8.22, 
                 m+11.8, 
                 0.1,
                 0.01941176470588);
@@ -93,10 +94,10 @@ Stages::Stages(King *k, King *q, Minefield *mf, Castle *c, Ship *s, Starfield *l
   stage.drop(0.05, 0.90);
   stages->push_back(stage);
 
-  ms -= 0.44;
+  ms -= step;
   stage = Stage(5, 
                 33+(Random::get()%3)+40, 
-                7.78, 
+                ms,//7.78, 
                 m+13.7, 
                 0.1,
                 0.03882352941176);
@@ -106,10 +107,10 @@ Stages::Stages(King *k, King *q, Minefield *mf, Castle *c, Ship *s, Starfield *l
   stage.drop(0.05, 0.90);
   stages->push_back(stage);
 
-  ms -= 0.44;
+  ms -= step;
   stage = Stage(6, 
-                36+(Random::get()%3)+40, 
-                7.34, 
+                36+(Random::get()%3)+50, 
+                ms,//7.34, 
                 m+15.6, 
                 0.1,
                 0.05823529411765);
@@ -125,10 +126,10 @@ Stages::Stages(King *k, King *q, Minefield *mf, Castle *c, Ship *s, Starfield *l
   stage.drop(0.42, 0.58);
   stages->push_back(stage);
 
-  ms -= 0.44;
+  ms -= step;
   stage = Stage(8, 
                 39+(Random::get()%3)+60, 
-                6.9, 
+                ms,//6.9, 
                 m+17.5, 
                 0.1,
                 0.07764705882353);
@@ -141,10 +142,10 @@ Stages::Stages(King *k, King *q, Minefield *mf, Castle *c, Ship *s, Starfield *l
   stage.drop(0.80, 1.00);
   stages->push_back(stage);
 
-  ms -= 0.44;
+  ms -= step;
   stage = Stage(9, 
                 42+(Random::get()%3)+60, 
-                6.46, 
+                ms,//6.46, 
                 m+19.4, 
                 0.1,
                 0.09705882352941);
@@ -157,10 +158,10 @@ Stages::Stages(King *k, King *q, Minefield *mf, Castle *c, Ship *s, Starfield *l
   stage.drop(0.80, 1.00);
   stages->push_back(stage);
 
-  ms -= 0.44;
+  ms -= step;
   stage = Stage(10, 
                 45+(Random::get()%3)+60, 
-                6.02, 
+                ms,//6.02, 
                 m+21.4,  //whoops. this one is not regular.
                 0.1,
                 0.11647058823529);
@@ -173,17 +174,16 @@ Stages::Stages(King *k, King *q, Minefield *mf, Castle *c, Ship *s, Starfield *l
   stage.drop(0.80, 1.00);
   stages->push_back(stage);
 
-  ms -= 0.44;
   stage = ChallengingStage(11, 55, 8.1, 55, 2.0);
   stage.left(MagnetInfo(0.66, 1.00, 5, -1, false, 0.0, 0.5));
   stage.right(MagnetInfo(0.99, 0.75, 11,  -1, false, 0.0, 0.0));
   stage.drop(0.40, 0.60);
   stages->push_back(stage);
 
-  ms -= 0.44;
+  ms -= step;
   stage = Stage(12, 
                 48+(Random::get()%3)+70, 
-                5.58, 
+                ms,//5.58, 
                 m+23.2, 
                 0.1,
                 0.13588235294118);
@@ -197,10 +197,10 @@ Stages::Stages(King *k, King *q, Minefield *mf, Castle *c, Ship *s, Starfield *l
   stage.drop(0.80, 0.95);
   stages->push_back(stage);
 
-  ms -= 0.44;
+  ms -= step;
   stage = Stage(13, 
                 51+(Random::get()%3)+70, 
-                5.14, 
+                ms,//5.14, 
                 m+25.1, 
                 0.1,
                 0.15529411764706);
@@ -214,10 +214,10 @@ Stages::Stages(King *k, King *q, Minefield *mf, Castle *c, Ship *s, Starfield *l
   stage.drop(0.80, 0.95);
   stages->push_back(stage);
 
-  ms -= 0.44;
+  ms -= step;
   stage = Stage(14, 
                 54+(Random::get()%3)+70, 
-                4.7, 
+                ms,//4.7, 
                 m+27, 
                 0.1,
                 0.17470588235294);
@@ -238,11 +238,11 @@ Stages::Stages(King *k, King *q, Minefield *mf, Castle *c, Ship *s, Starfield *l
   stage.drop(0.80, 0.95);
   stages->push_back(stage);
 
-  ms -= 0.44;
+  ms -= step;
   stage = Stage(16, 
-                57+(Random::get()%3)+80, 
-                4.7, 
-                ms, 
+                57+(Random::get()%3)+110, 
+                ms,//4.7, 
+                m+28.9,
                 0.1,
                 0.19411764705882);
   stage.left(MagnetInfo(0.66, 1.00, 5, -1, false, 0.5, 0.5));
@@ -256,7 +256,7 @@ Stages::Stages(King *k, King *q, Minefield *mf, Castle *c, Ship *s, Starfield *l
   stages->push_back(stage);
 
   stage = Stage(17, 
-                60+(Random::get()%3)+80, 
+                60+(Random::get()%3)+110, 
                 ms, 
                 m+30.8, 
                 0.1,
@@ -272,7 +272,7 @@ Stages::Stages(King *k, King *q, Minefield *mf, Castle *c, Ship *s, Starfield *l
   stages->push_back(stage);
 
   stage = Stage(18, 
-                63+(Random::get()%3)+80, 
+                63+(Random::get()%3)+110, 
                 ms, 
                 m+32.7, 
                 0.1,
@@ -294,7 +294,7 @@ Stages::Stages(King *k, King *q, Minefield *mf, Castle *c, Ship *s, Starfield *l
   stages->push_back(stage);
 
   stage = Stage(20, 
-                66+(Random::get()%3)+90, 
+                66+(Random::get()%3)+120, 
                 ms, 
                 m+34.6, 
                 0.1,
@@ -309,7 +309,7 @@ Stages::Stages(King *k, King *q, Minefield *mf, Castle *c, Ship *s, Starfield *l
   stages->push_back(stage);
 
   stage = Stage(21, 
-                69+(Random::get()%3)+90, 
+                69+(Random::get()%3)+130, 
                 ms, 
                 m+36.5, 
                 0.1,
@@ -324,7 +324,7 @@ Stages::Stages(King *k, King *q, Minefield *mf, Castle *c, Ship *s, Starfield *l
   stages->push_back(stage);
 
   stage = Stage(22, 
-                72+(Random::get()%3)+90, 
+                72+(Random::get()%3)+140, 
                 ms, 
                 m+38.4, 
                 0.1,
@@ -345,7 +345,7 @@ Stages::Stages(King *k, King *q, Minefield *mf, Castle *c, Ship *s, Starfield *l
   stages->push_back(stage);
 
   stage = Stage(24, 
-                75+(Random::get()%3)+100, 
+                75+(Random::get()%3)+150, 
                 ms, 
                 m+40.3, 
                 0.1,
@@ -360,7 +360,7 @@ Stages::Stages(King *k, King *q, Minefield *mf, Castle *c, Ship *s, Starfield *l
   stages->push_back(stage);
 
   stage = Stage(25, 
-                78+(Random::get()%3)+100, 
+                78+(Random::get()%3)+160, 
                 ms, 
                 m+44.2, 
                 0.1,
