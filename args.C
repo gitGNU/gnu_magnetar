@@ -141,7 +141,8 @@ Pilot a spaceship through asteroid fields near a magnetar.\n\
   Q quits the game\n\
   1 starts a one player game\n\
   2 starts a two player game\n\
-  space adds a coin to the game\n\n");
+  space adds a coin to the game\n\
+  F3 resets the game\n\n");
   fprintf(stdout, "High scores are stored in ~/.magnetar/high-score.\n");
   fprintf(stdout, "Configuration is stored in ~/.magnetar/config.\n\n");
   fprintf (stdout, "Send bug reports to %s.\n", PACKAGE_BUGREPORT);
