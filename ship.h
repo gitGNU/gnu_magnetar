@@ -135,8 +135,13 @@ Ship::thrust(const key_state n)
     user_thrusting = (n == KEY_DOWN);
     if (bonus_sound_on == false)
       {
-        if (user_thrusting && has_energy_left() == false)
-          return;
+        if (has_energy_left() == false)
+          {
+            thrust_sound(false);
+            return;
+          }
+        //if (user_thrusting)
+          //return;
         thrust_sound (user_thrusting);
       }
 } // Ship::thrust

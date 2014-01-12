@@ -296,6 +296,11 @@ Ship::move(Castle *castle, King *king, King *queen, Minefield *minefield, Stats 
 
 	set_dx(xcos(drift_angle) * speed);
 	set_dy(-xsin(drift_angle) * speed);
+        if (bonus_sound_on == false)
+          {
+            user_thrusting = false;
+            thrust_sound (false);
+          }
     }
 
     if (king && castle)
@@ -536,6 +541,11 @@ Ship::hit(Xything *badguy)
           {
             kill();
             play(SHIP_EXPLODE);
+            if (bonus_sound_on == false)
+              {
+                user_thrusting = false;
+                thrust_sound (false);
+              }
           }
         else
           {
