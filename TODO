@@ -1,12 +1,2 @@
 
-re-test the game with new point structure and speeds.
-
-there's a problem with maintaining difficulty across different screen sizes.
-
-there's the typical aspect ratio and screen size that people will be playing on.
-
-and then there's the arcade cabinet.
-
-perhaps the ship speed should be static and not depend on screen size.
-
-it takes about 3 seconds for the ship to go across the screen, no matter the screen.  (go across the higher of width or height).
+re-test the game at 3:4 and make a chart of duration and points for 20 games
