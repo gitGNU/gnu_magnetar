@@ -978,6 +978,8 @@ animate(void)
                 craziness = 1;
               else
                 {
+                  if (game->ship->alive() == false)
+                    game->stats()->set_died_on_challenging_stage();
                   if (game->stats()->died_on_challenging_stage == false)
                     game->stats()->add_score(100); 
                 //did we shoot them all?
