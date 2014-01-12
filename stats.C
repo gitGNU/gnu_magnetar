@@ -918,8 +918,13 @@ Stats::render(const bool ink)
               }
 
             if (stages->challenge())
-              snprintf (buf, sizeof (buf), "%d pts FOR %d ASTEROIDS", 
-                        mines_shot * 10, mines_shot);
+              {
+                if (mines_shot > 0)
+                  snprintf (buf, sizeof (buf), "%d pts FOR %d ASTEROIDS", 
+                            mines_shot * 10, mines_shot);
+                else
+                  snprintf (buf, sizeof (buf), "no asteroids shot");
+              }
             else
               snprintf (buf, sizeof (buf), "%d pts FOR %d ASTEROIDS", 
                         mines_passed * 10, mines_passed);
@@ -988,9 +993,13 @@ Stats::render(const bool ink)
               }
             else 
               {
+                if (score_in_wave != 0)
                     snprintf (buf, sizeof (buf), "%d TOTAL PTS", 
                               score_in_wave);
-                    text_copyright.set_message(buf);
+                else
+                  snprintf (buf, sizeof (buf), "SON OF A CRAPPER");
+
+                text_copyright.set_message(buf);
               }
             break;
           case STATE_SHOW_PLAYER_SCORE:
