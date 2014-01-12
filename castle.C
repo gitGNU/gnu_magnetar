@@ -210,7 +210,8 @@ Castle::turn(Minefield *minefield, King *king, Stats *stats, Game *game)
                 rings[i]->set_dtheta(Difficulty::ring_speed[i] / args.fps);
 	    }
 	}
-    } else if (!rings[0]->remaining()) {
+    } 
+    if (!rings[0]->remaining()) {
 	// enemy has destroyed entire outer ring
 	Ring *tmpwall = rings[0];
 
