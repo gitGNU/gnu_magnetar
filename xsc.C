@@ -330,7 +330,7 @@ handle_event(void)
                 else if (game->state == STATE_INITIALS) {
                   game->stats()->initial_change_right();
                 }
-	    } 
+	    }
             if (game->is_thrust_key (ks)) {
 		if (game->state == STATE_NORMAL ||
                     game->state == STATE_SHOW_PLAYER_SCORE) {
@@ -453,7 +453,8 @@ handle_event(void)
 		if (game->state == STATE_NORMAL ||
                     game->state == STATE_WAVE_COMPLETE ||
                     game->state == STATE_ADD_PLAYER_BONUSES ||
-                    game->state == STATE_SHOW_PLAYER_SCORE) {
+                    game->state == STATE_SHOW_PLAYER_SCORE ||
+                    game->state == STATE_PAUSED) {
                   if (args.flip_p2 && game->p() && game->p()->get_id() % 2 == 0)
                     game->ship->rotate_cw(KEY_UP);
                   else
@@ -464,7 +465,8 @@ handle_event(void)
 		if (game->state == STATE_NORMAL ||
                     game->state == STATE_WAVE_COMPLETE ||
                     game->state == STATE_ADD_PLAYER_BONUSES ||
-                    game->state == STATE_SHOW_PLAYER_SCORE) {
+                    game->state == STATE_SHOW_PLAYER_SCORE ||
+                    game->state == STATE_PAUSED) {
                   if (args.flip_p2 && game->p() && game->p()->get_id() % 2 == 0)
                     game->ship->rotate_ccw(KEY_UP);
                   else
@@ -475,7 +477,8 @@ handle_event(void)
 		if (game->state == STATE_NORMAL ||
                     game->state == STATE_WAVE_COMPLETE ||
                     game->state == STATE_ADD_PLAYER_BONUSES ||
-                    game->state == STATE_SHOW_PLAYER_SCORE) {
+                    game->state == STATE_SHOW_PLAYER_SCORE ||
+                    game->state == STATE_PAUSED) {
                   game->ship->thrust(KEY_UP);
 		}
 	    }
