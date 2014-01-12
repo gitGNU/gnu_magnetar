@@ -53,5 +53,6 @@ extern int craziness;
 void _XDrawLine(Display * display, Window window, GC thisgc, int nx0, int ny0, int nx1, int ny1, bool);
 void _XFillArc(Display *display, Window window, GC thisgc, int x, int y, int xsize, int ysize, int b, int d, bool);
 void fill_gcs();
+void draw_grid(bool ink);
 
 #endif	// MAGNETAR_UTIL_H

@@ -374,3 +374,23 @@ fill_gcs()
   fill_circle (bright_gcs, int(max(wh(), ww()) * 0.1223589),
                fetch_gc(GC_BRIGHT_YELLOW));
 }
+
+void 
+draw_grid(bool ink)
+{
+  for (int i=0; i<=16; i++)  
+    {
+      int cx = i*(ww()-1)/16;  
+      int cy = i*(wh()-1)/16;  
+      if (ink)
+        {
+      _XDrawLine(display, game_window, fetch_gc(GC_BRIGHT_GREY), cx, 0, cx, wh(), false);  
+      _XDrawLine(display, game_window, fetch_gc(GC_BRIGHT_GREY), 0, cy, ww(), cy, false);  
+        }
+      else
+        {
+      _XDrawLine(display, game_window, fetch_gc(GC_BLACK), cx, 0, cx, wh(), false);  
+      _XDrawLine(display, game_window, fetch_gc(GC_BLACK), 0, cy, ww(), cy, false);  
+        }
+    }  
+}

@@ -17,3 +17,4 @@ now not crashing when we start a game on `quiet' and view the copyright screen.
 no longer hitting invisible asteroids on challenging stage after a ship dies.
 
 version 0.0.3.
+now showing a grid for a fraction of a second at startup

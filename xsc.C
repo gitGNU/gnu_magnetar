@@ -86,6 +86,7 @@ const double total_elapsed_time_to_enter_initials = 35.0;
 const double total_elapsed_time_to_show_initials = 2.0;
 const double total_elapsed_time_to_show_copyright = 8.0;
 const double total_elapsed_time_to_show_initial_copyright = 2.0;
+const double total_elapsed_time_to_show_initial_grid = 0.37;
 
 void
 key_repeat(const bool on)
@@ -526,7 +527,21 @@ handle_event(void)
 bool
 change_states()
 {
-  if (game->state == STATE_NORMAL && game->castle->resting() && !game->king->alive())
+  if (game->state == STATE_PATTERN && game->get_reset_soon_flag() == false)
+    {
+      //okay we are just beginning.
+      static double age;
+      age += (1.0/args.fps);
+      if (age > total_elapsed_time_to_show_initial_grid)
+        {
+          age = 0;
+          game->state = STATE_COPYRIGHT;
+          draw_grid(false);
+          play (STAGE_START);
+          return false;
+        }
+    }
+  else if (game->state == STATE_NORMAL && game->castle->resting() && !game->king->alive())
     {
       game->state = STATE_SHOW_PLAYER_SCORE;
       return false;
@@ -1197,7 +1212,7 @@ main(const int argc, char **const argv)
 
   game = new Game();
   game->cancel_game_and_go_into_test_mode();
-  game->state = STATE_COPYRIGHT;
+  game->state = STATE_PATTERN;
   light_starfield = new Starfield(11, true);
   stages = new Stages(game->king, game->queen, game->minefield, game->castle, game->ship, light_starfield, game);
 
@@ -1230,20 +1245,10 @@ main(const int argc, char **const argv)
         game->stats()->draw();
     snooze();
     if (first)
-      {
-        play (STAGE_START);
-        first = false;
-      }
-    if (game->get_reset_soon_flag())
-      {
-        for (int i=0; i<=16; i++)  
-          {
-            int cx = i*(ww()-1)/16;  
-            int cy = i*(wh()-1)/16;  
-            _XDrawLine(display, game_window, fetch_gc(GC_BRIGHT_GREY), cx, 0, cx, wh(), false);  
-            _XDrawLine(display, game_window, fetch_gc(GC_BRIGHT_GREY), 0, cy, ww(), cy, false);  
-          }  
-      }
+      first = false;
+
+    if (game->get_reset_soon_flag() || game->state == STATE_PATTERN)
+      draw_grid(true);
 
   }
 
