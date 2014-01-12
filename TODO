@@ -1,3 +1,11 @@
 
 re-test the game at 3:4 and make a chart of duration and points for 20 games
-
+(3 lives, extra life at 10000)
+average score: 12036
+median score: 8454.5
+average final stage: 11.8
+median final stage: 9
+average duration: 363.55 (6.06 minutes)
+median duration: 291 (4.85 minutes)
+average score while not touching controls: 1031
+average duration while not touching controls: 75.2 seconds
