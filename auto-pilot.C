@@ -1,5 +1,5 @@
 //      MAGNETAR
-//      Copyright (C) 2013 Ben Asselstine
+//      Copyright (C) 2013, 2014 Ben Asselstine
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -33,7 +33,19 @@ AutoPilot::AutoPilot(Game *g)
   Stamp thrust_until  = time_now;
   Stamp thrust_start = time_now;
   secondary_rotation_completed = false;
-  secondary_theta = Random::get() % 2 == 0 ? 238.0 : 242.0;
+  strategy = Random::get() % 3;
+  switch (strategy)
+    {
+    case 2:
+      secondary_theta = 180;
+      break;
+    case 1:
+      secondary_theta = Random::get() % 2 == 0 ? 122.0 : 126.0;
+      break;
+    case 0:
+      secondary_theta = Random::get() % 2 == 0 ? 238.0 : 242.0;
+      break;
+    }
 } // AutoPilot::AutoPilot
     
 AutoPilot::~AutoPilot(void)
@@ -44,16 +56,57 @@ void AutoPilot::turn()
 {
   if (initial_rotation_completed == false)
     {
-      if (game->ship->alive() == false && game->ship->rotating_ccw())
-        game->ship->rotate_ccw(KEY_DOWN);
-      //keep turning ccw until what?
-      if (game->ship->rotating_ccw() == false && 
-          game->ship->get_theta() <= 240)
-        game->ship->rotate_ccw(KEY_DOWN);
-      else if (game->ship->get_theta() > 240.0)
+      if (game->ship->alive() == false && (game->ship->rotating_ccw() || game->ship->rotating_cw()))
         {
-          game->ship->rotate_ccw(KEY_UP);
-          initial_rotation_completed = true;
+          switch (strategy)
+            {
+            case 1:
+        game->ship->rotate_ccw(KEY_DOWN);
+        break;
+            case 0:
+        game->ship->rotate_ccw(KEY_DOWN);
+        break;
+            }
+        }
+      //keep turning ccw until what?
+      switch (strategy)
+        {
+        case 2:
+            {
+              if (game->ship->rotating_ccw() == false && 
+                  game->ship->get_theta() <= 180)
+                game->ship->rotate_ccw(KEY_DOWN);
+              else if (game->ship->get_theta() > 180.0)
+                {
+                  game->ship->rotate_ccw(KEY_UP);
+                  initial_rotation_completed = true;
+                }
+            }
+          break;
+        case 1:
+            {
+              if (game->ship->rotating_ccw() == false && 
+                  game->ship->get_theta() <= 124)
+                game->ship->rotate_ccw(KEY_DOWN);
+              else if (game->ship->get_theta() > 124.0)
+                {
+                  game->ship->rotate_ccw(KEY_UP);
+                  initial_rotation_completed = true;
+                }
+            }
+          break;
+        case 0:
+            {
+              if (game->ship->rotating_ccw() == false && 
+                  game->ship->get_theta() <= 240)
+                game->ship->rotate_ccw(KEY_DOWN);
+              else if (game->ship->get_theta() > 240.0)
+                {
+                  game->ship->rotate_ccw(KEY_UP);
+                  initial_rotation_completed = true;
+                }
+            }
+          break;
         }
     } 
   else if (initial_rotation_completed && secondary_rotation_completed == false)
@@ -61,13 +114,27 @@ void AutoPilot::turn()
       double diff = abs(secondary_theta - game->ship->get_theta());
       if (diff < 10 + (Random::get() % 50))
         {
-        game->ship->rotate_cw(KEY_UP);
-        game->ship->rotate_ccw(KEY_DOWN);
+          switch (strategy)
+            {
+            case 2:
+              game->ship->rotate_cw(KEY_UP);
+              game->ship->rotate_ccw(KEY_DOWN);
+              break;
+            case 1:
+              game->ship->rotate_cw(KEY_UP);
+              game->ship->rotate_ccw(KEY_DOWN);
+              break;
+            case 0:
+              game->ship->rotate_cw(KEY_UP);
+              game->ship->rotate_ccw(KEY_DOWN);
+              break;
+            }
         }
       else if (diff > 100)
         {
         secondary_rotation_completed = true;
         game->ship->rotate_ccw(KEY_UP);
+        game->ship->rotate_cw(KEY_UP);
         }
 
     }
@@ -119,11 +186,24 @@ void AutoPilot::reset()
 {
   initial_rotation_completed = false;
     game->ship->rotate_ccw(KEY_UP);
+    game->ship->rotate_cw(KEY_UP);
     game->ship->thrust(KEY_UP);
     game->ship->reincarnate();
     thrust_start = time_now;
     thrust_until = time_now;
     secondary_rotation_completed = false;
-  secondary_theta = Random::get() % 2 == 0 ? 238.0 : 242.0;
+  strategy = Random::get() % 3;
+  switch (strategy)
+    {
+    case 2:
+      secondary_theta = 180;
+      break;
+    case 1:
+      secondary_theta = Random::get() % 2 == 0 ? 122.0 : 126.0;
+      break;
+    case 0:
+      secondary_theta = Random::get() % 2 == 0 ? 238.0 : 242.0;
+      break;
+    }
           initial_thrusting_started = false;
 }

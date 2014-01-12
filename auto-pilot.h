@@ -1,5 +1,5 @@
 //      MAGNETAR
-//      Copyright (C) 2013 Ben Asselstine
+//      Copyright (C) 2013, 2014 Ben Asselstine
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -36,6 +36,7 @@ private:
     bool secondary_rotation_completed;
     double secondary_theta;
     bool initial_thrusting_started;
+    int strategy;
 public:
     AutoPilot(Game *game);
     void turn();
