@@ -934,7 +934,8 @@ animate(void)
     if (fallen)
       {
         //end of stage/level/wave.
-        if (game->ship->alive() && stages->challenge() == false)
+        if (game->ship->alive() && stages->challenge() == false &&
+            game->ship->is_respawning() == false)
           {
             game->stats()->add_score (10 * fallen);
             play (ASTEROID_LEAVING);
