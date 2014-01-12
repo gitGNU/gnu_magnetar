@@ -953,7 +953,8 @@ animate(void)
       }
       if (game->get_expired_mines() >= stages->get_max_mines() &&
           game->state != STATE_WAVE_COMPLETE &&
-          game->state != STATE_ADD_PLAYER_BONUSES) //33
+          game->state != STATE_ADD_PLAYER_BONUSES &&
+          game->state != STATE_OVER)
         {
           game->king->hit (NULL, NULL, NULL, NULL);
           game->queen->hit (NULL, NULL, NULL, NULL);
