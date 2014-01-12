@@ -978,8 +978,9 @@ animate(void)
                   if (game->stats()->died_on_challenging_stage == false)
                     game->stats()->add_score(100); 
                 //did we shoot them all?
-                if (game->stats()->get_mines_shot() ==
-                    stages->get_max_mines())
+                if (game->stats()->get_mines_shot() >=
+                    stages->get_max_mines() * 0.70 &&
+                    game->stats()->died_on_challenging_stage == false)
                   game->stats()->add_score(1000);
                 }
             }

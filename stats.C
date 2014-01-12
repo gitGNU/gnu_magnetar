@@ -948,7 +948,8 @@ Stats::render(const bool ink)
               }
             if (stages->challenge())
               {
-                if (get_mines_shot() == stages->get_max_mines())
+                if (get_mines_shot() >= stages->get_max_mines() * 0.70 &&
+                    died_on_challenging_stage == false)
                   text_secondary.set_message("SPECIAL BONUS 1000 POINTS");
                 ship->lose_energy(1);
                 //text_energy_bar.set_message("");
