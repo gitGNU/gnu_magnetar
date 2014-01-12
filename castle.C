@@ -211,7 +211,7 @@ Castle::turn(Minefield *minefield, King *king, Stats *stats, Game *game)
 	    }
 	}
     } 
-    if (!rings[0]->remaining()) {
+    if (state == CASTLE_STATE_NORMAL && !rings[0]->remaining()) {
 	// enemy has destroyed entire outer ring
 	Ring *tmpwall = rings[0];
 
