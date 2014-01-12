@@ -1,2 +1,19 @@
 
 re-test the game at 3:4 and make a chart of duration and points for 20 games
+
+pausing and then unpausing turns on thruster sound?
+
+no regeneration happening on bonuses that are completely destroyed.
+
+when the ship dies and it's game over, and then the last asteroid goes through the bottom, the game over screen is short-circuited.
+
+maybe not collect points while the ship is flashing red/white reincarnating.
+
+
+add some silence before music starts.
+
+
+crashed on challenging stage and it said 100 points for not crashing.
+  died right at the end
+
+thrust sound needs to sound better when we hold it down
