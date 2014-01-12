@@ -1,6 +1,6 @@
 version 0.0.1. December 2013.
 
-version 0.0.2.
+version 0.0.2. January 2014.
 changed the overall difficulty by making asteroids go faster at the start
 the ship now uses more energy when the thruster is burned
 now pressing the F3 key will reset the game
@@ -16,3 +16,4 @@ now resetting bonus at game start so it doesn't persist from attract screen.
 now not crashing when we start a game on `quiet' and view the copyright screen.
 no longer hitting invisible asteroids on challenging stage after a ship dies.
 
+version 0.0.3.

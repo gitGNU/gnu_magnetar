@@ -1,7 +1,7 @@
 dnl Process this file with autoconf to produce a configure script.
 dnl
 dnl     MAGNETAR
-dnl     Copyright (C) 2013 Ben Asselstine
+dnl     Copyright (C) 2013, 2014 Ben Asselstine
 dnl
 dnl This program is free software; you can redistribute it and/or modify
 dnl it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@ dnl 02110-1301, USA.
 
 
 dnl Initializations:
-AC_INIT([magnetar],[0.0.2],[http://sv.nongnu.org/bugs/?group=magnetar])
+AC_INIT([magnetar],[0.0.3],[http://sv.nongnu.org/bugs/?group=magnetar])
 AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE
 AC_PREREQ([2.69])
