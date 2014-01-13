@@ -22,6 +22,7 @@ the ship flies a little more randomly in the attract screen
 now regenerating circular bonuses like star castle when the outer ring is completely destroyed by asteroids
 now giving a 1000 point bonus in the challenging stage when we shoot 70% of the asteroids (and stay alive)
 no longer collecting points from asteroids avoided while the ship is respawning
+now temporarily making the ship bigger when we pass a wave
 
 bug fixes:
 fixed bug that would mistakenly award 100 points on a challenging stage when the ship died at the end of the stage.
