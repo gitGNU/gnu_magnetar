@@ -217,6 +217,11 @@ Ship::is_respawning()
 void
 Ship::move(Castle *castle, King *king, King *queen, Minefield *minefield, Stats *stats)
 {
+  if (craziness == 1)
+    set_scale(get_scale() - (10.0 / (float)args.fps));
+  else if (craziness == 0)
+    set_scale(25.0);
+
     int i;
     int t = user_thrusting;
     if (has_energy_left() == false)
