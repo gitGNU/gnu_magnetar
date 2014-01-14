@@ -130,11 +130,14 @@ Ship::Ship(void)
     spikes = NULL;
     time_of_death = 0;
     pause_sum = 0;
+    shield = NULL;
 } // Ship::Ship
 
 
 Ship::~Ship(void)
 {
+  if (shield)
+    delete shield;
     //fprintf(stderr, "Ship::~Ship()\n");
     delete[] lasers;
 } // Ship::~Ship
@@ -158,6 +161,8 @@ Ship::initial_y(void)
 void
 Ship::render(const bool ink)
 {
+  if (shield)
+    shield->render(ink);
     for (int i = 0; i < max_shots; i++) {
 	lasers[i].render(ink);
     }
@@ -218,9 +223,17 @@ void
 Ship::move(Castle *castle, King *king, King *queen, Minefield *minefield, Stats *stats)
 {
   if (craziness == 1)
-    set_scale(get_scale() - (10.0 / (float)args.fps));
+    {
+      set_scale(get_scale() - (10.0 / (float)args.fps));
+      if (shield)
+        shield->increase_scales(1 + (0.8 / (float)args.fps));
+    }
   else if (craziness == 0)
-    set_scale(25.0);
+    {
+      set_scale(25.0);
+      if (shield)
+        shield->set_scales();
+    }
 
     int i;
     int t = user_thrusting;
@@ -362,6 +375,11 @@ Ship::move(Castle *castle, King *king, King *queen, Minefield *minefield, Stats 
                           play (EXTRA_SHIP_AWARDED);
                         }
                       break;
+                    case 5:
+                        {
+                          shield_on(true);
+                          break;
+                        }
                     }
                   castle->explode(stats);
                   play (REWARD_OBTAINED);
@@ -393,12 +411,17 @@ Ship::move(Castle *castle, King *king, King *queen, Minefield *minefield, Stats 
           }
       }
     Xything::move();
+  if (shield)
+      shield->place_at_ship(this);
 } // Ship::move
 
 
 void
 Ship::turn(void)
 {
+
+  if (shield)
+    shield->turn(game->minefield, game->king, game->stats(), game);
 
       if (spikes)
         {
@@ -497,6 +520,8 @@ void
 Ship::resize(const int nwidth, const int nheight)
 {
     int i;
+  if (shield)
+    shield->resize(nwidth, nheight);
 
     Xything::resize(nwidth, nheight);
     for (i = 0; i < max_shots; i++) {
@@ -509,6 +534,11 @@ Ship::resize(const int nwidth, const int nheight)
 void
 Ship::kill()
 {
+  if (shield)
+    {
+    shield->instant_hide();
+    shield_on(false);
+    }
     state = SHIP_EXPLODING;
 
     explosion = new Kapow(fetch_gc(GC_BRIGHT_YELLOW), 0.45, 14);
@@ -521,6 +551,14 @@ Ship::kill()
     set_y(wh2());
     time_of_death = time_now;
     pause_sum = 0;
+}
+
+bool
+Ship::shield_collision(Buzzer *buzzer, Stats *stats)
+{
+  if (shield)
+  return shield->buzzer_collision (buzzer, this, stats);
+  return false;
 }
 
 bool
@@ -620,4 +658,28 @@ Ship::clear_keystrokes()
     rotate_ccw(KEY_UP);
   if (rotating_cw())
     rotate_cw(KEY_UP);
+}
+
+void
+Ship::shield_on(bool on)
+{
+  if (on == false)
+    {
+      if (shield)
+        {
+          shield->render(false);
+          delete shield;
+        }
+    shield = NULL;
+    }
+  else
+    {
+      if (shield)
+        {
+          shield->render(false);
+          delete shield;
+        }
+      shield = new Castle();
+      shield->instant_reset();
+    }
 }

@@ -88,6 +88,8 @@ public:
 	    double * /*const*/, double * /*const*/);
     void explode(Stats *);
     void zap(); //don't collapse it.
+    void instant_hide(); //like zap but it doesn't reappear
+    void instant_reset();
     void reset();
     void refresh(void) const;
     int get_reward_type() const {return reward_type;};
@@ -103,6 +105,9 @@ public:
     void jump();
     int get_number_of_remaining_segments() const;
     int get_total_number_of_segments() const;
+    void place_at_ship (Ship *);
+    void set_scales();
+    void increase_scales(double percent);
 };
 
 

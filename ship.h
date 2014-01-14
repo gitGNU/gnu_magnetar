@@ -65,6 +65,7 @@ private:
     double energy;
     bool impervious;
     Stamp started_impervious_at;
+    Castle *shield;
 
     double initial_x(void);
     double initial_y(void);
@@ -104,6 +105,8 @@ public:
     bool is_respawning();
     void reset_impervious();
     void clear_keystrokes();
+    bool shield_collision(Buzzer *buzzer, Stats *stats);
+    void shield_on(bool on);
 };
 
 

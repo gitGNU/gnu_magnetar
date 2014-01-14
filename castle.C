@@ -66,6 +66,24 @@ Castle::~Castle(void)
     delete[] rings;
 } // Castle::~Castle
 
+void
+Castle::set_scales()
+{
+  if (state == CASTLE_STATE_NORMAL)
+    {
+  for (int i = 0; i < MAX_RINGS; i++) {
+    rings[i]->set_scale(scales[i]);
+  }
+  }
+}
+void
+Castle::increase_scales(double percent)
+{
+  for (int i = 0; i < MAX_RINGS; i++) {
+    rings[i]->set_scale(rings[i]->get_scale() / percent);
+  }
+}
+
 double
 Castle::get_x() const
 {
@@ -115,7 +133,8 @@ Castle::turn(Minefield *minefield, King *king, Stats *stats, Game *game)
 
       if ((time_now - time_of_death) - pause_sum > resting_time + staying_time)
         {
-          play (REWARD_LEAVING);
+          if (reward_type >= 0)
+            play (REWARD_LEAVING);
         explode(stats);
         }
     } else if (state == CASTLE_STATE_REGENERATING) {
@@ -194,7 +213,8 @@ Castle::turn(Minefield *minefield, King *king, Stats *stats, Game *game)
               return;
             }
 	    state = CASTLE_STATE_REGENERATING;
-            play (REWARD_ENTERING);
+            if (reward_type >= 0)
+              play (REWARD_ENTERING);
             // this is where we make the scales a little smaller so that
             // the rings can spin and grow into their proper shape.
             // we also change the spinning speeds and directions here
@@ -227,7 +247,8 @@ Castle::turn(Minefield *minefield, King *king, Stats *stats, Game *game)
 	    rings[i]->set_dtheta(Difficulty::ring_speed[i] / args.fps);
 	}
 	state = CASTLE_STATE_REGENERATING;
-        play (REWARD_ENTERING);
+        if (reward_type >= 0)
+          play (REWARD_ENTERING);
 	//minefield->upgrade(this);
         stats->regenerated_a_ring();
     }
@@ -337,23 +358,50 @@ Castle::seg_center(const int ring_idx, /*const*/ double degrees,
 int
 Castle::get_random_reward()
 {
-  int r = Random::get() % 100;
-  if (r < 55)
-    return 0;
-  else if (r < 80)
-    return 1;
-  else if (r < 96)
-    return 2;
-  else if (r < 98)
-    return 3;
+  if (stages->get_stage_num() >= 22)
+    {
+      int r = Random::get() % 100;
+      if (r < 20)
+        return 1;
+      else if (r < 40)
+        return 2;
+      else if (r < 60)
+        return 3;
+      else if (r < 80)
+        return 4;
+      else
+        return 5;
+    }
   else
-    return 4;
+    {
+      int r = Random::get() % 100;
+      if (r < 55)
+        return 0;
+      else if (r < 80)
+        return 1;
+      else if (r < 94)
+        return 2;
+      else if (r < 96)
+        return 3;
+      else if (r < 98)
+        return 4;
+      else
+        return 5;
+    }
   return 0;
 }
 
 void 
 Castle::reset()
 {
+  if (reward_type == -1)
+    {
+      time_of_death = time_now; 
+      state = CASTLE_STATE_RESTING;
+      resting_time = 0;
+  staying_time = 1 * 1000000;
+    return;
+    }
   reward_type = get_random_reward();
   state = CASTLE_STATE_RESTING;
   time_of_death = time_now; 
@@ -401,6 +449,10 @@ Castle::reset()
       rings[1]->set_gc(fetch_gc(GC_BRIGHT_GREY));
       rings[2]->set_gc(fetch_gc(GC_BRIGHT_GREY));
       break;
+    case 5:
+      numrings = 1;
+      rings[0]->set_gc(fetch_gc(GC_GREEN));
+      break;
     }
 }
 
@@ -410,6 +462,30 @@ Castle::explode(Stats *stats)
   state = CASTLE_STATE_COLLAPSING;
   time_of_death = time_now; 
 } // Castle::explode
+
+void
+Castle::instant_hide()
+{
+  erase();
+  state = CASTLE_STATE_RESTING;
+  time_of_death = time_now; 
+}
+void 
+Castle::instant_reset()
+{
+  reward_type = -1;
+  state = CASTLE_STATE_NORMAL;
+  time_of_death = time_now; 
+  //int secs = get_resting_time();
+  resting_time = 0;
+  //secs = get_staying_time();
+  //staying_time = (secs) * 2000000;
+  staying_time = 1 * 1000000;
+  for (int i = 0; i < MAX_RINGS; i++)
+    rings[i]->set_gc(fetch_gc(GC_BLACK));
+  numrings = 1;
+  rings[0]->set_gc(fetch_gc(GC_GREEN));
+}
 
 void
 Castle::zap()
@@ -453,4 +529,13 @@ Castle::recently_died() const
   if (diff > 2000000)
     return false;
   return true;
+}
+    
+void 
+Castle::place_at_ship (Ship *ship)
+{
+    for (int i = 0; i < MAX_RINGS; i++) {
+      rings[i]->set_x(ship->get_x());
+      rings[i]->set_y(ship->get_y());
+    }
 }

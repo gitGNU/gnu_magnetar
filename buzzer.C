@@ -1,6 +1,6 @@
 //      MAGNETAR
 //      Copyright (c) 1993-2005 by Mark B. Hanson (mbh@panix.com).
-//      Copyright (C) 2013 Ben Asselstine
+//      Copyright (C) 2013, 2014 Ben Asselstine
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -125,6 +125,8 @@ Buzzer::move(Castle *castle, Ship *ship, King *king, Stats *stats, bool &buzzer_
     set_y(get_y() + get_dy());
     
     if (castle->buzzer_collision(this, ship, stats))
+      snuff();
+    if (ship->shield_collision(this, stats))
       snuff();
     else if (ship->hit(this))
       {

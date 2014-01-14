@@ -970,6 +970,7 @@ animate(void)
           if (game->state == STATE_NORMAL ||
               game->state == STATE_SHOW_PLAYER_SCORE)
             {
+              game->ship->shield_on(false);
               game->stats()->write_stats_record();
               game->state=STATE_WAVE_COMPLETE;
               game->ship->reset_impervious();
