@@ -17,10 +17,12 @@ now not crashing when we start a game on `quiet' and view the copyright screen.
 no longer hitting invisible asteroids on challenging stage after a ship dies.
 
 version 0.0.3.
+added new green shield bonus type that protects the ship intermittently
+now increasing chances of rare bonsues in later levels
 now showing a grid for a fraction of a second at startup
 the ship flies a little more randomly in the attract screen
 now regenerating circular bonuses like star castle when the outer ring is completely destroyed by asteroids
-now giving a 1000 point bonus in the challenging stage when we shoot 70% of the asteroids (and stay alive)
+now giving a 1000 point bonus in the challenging stage when we shoot 70% of the asteroids (and stay alive), instead of having to shoot 100%.
 no longer collecting points from asteroids avoided while the ship is respawning
 now temporarily making the ship bigger when we pass a wave
 
