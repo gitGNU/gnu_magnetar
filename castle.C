@@ -358,7 +358,7 @@ Castle::seg_center(const int ring_idx, /*const*/ double degrees,
 int
 Castle::get_random_reward()
 {
-  if (stages->get_stage_num() >= 22)
+  if (game && stages->get_stage_num() >= 22)
     {
       int r = Random::get() % 100;
       if (r < 20)
