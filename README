@@ -111,3 +111,21 @@ Aspect Ratios Matter
 The difficulty of the game changes with a different aspect ratio.  The development of the game has largely happened with a 4:3 aspect ratio, but perhaps a 3:4 aspect ratio is better for an arcade cabinet.
 The speed of the ship is affected by the aspect ratio.  Slow ships will have a harder time on earlier stages.
 The number of energy bars is affected by the width of the screen.  Wider screens provide more points at the end of a stage.
+
+
+install a joystick and then setup the buttons to send keycodes using joy2key.
+http://sourceforge.net/projects/joy2key
+
+Here's a script to make joy2key keep going after a reset (F3) is done in the game.
+#!/bin/bash
+while [ 1 ]; do 
+  xwininfo -name MAGNETAR >/dev/null 2>/dev/null
+  if [ "$?x" == "0x" ]; then
+    joy2key MAGNETAR -X -thresh 0 0 0 0 0 0 0 0 -buttons space 1 2 d f j k t F3 -deadzone 50 -thresh 0 0 0 0 0 0 0 0
+  fi
+  sleep 1
+done
+
+
+
+
