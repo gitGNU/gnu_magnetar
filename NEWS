@@ -25,6 +25,7 @@ now regenerating circular bonuses like star castle when the outer ring is comple
 now giving a 1000 point bonus in the challenging stage when we shoot 70% of the asteroids (and stay alive), instead of having to shoot 100%.
 no longer collecting points from asteroids avoided while the ship is respawning
 now temporarily making the ship bigger when we pass a wave
+now freezing the asteroids in place when we die
 
 bug fixes:
 fixed bug that would mistakenly award 100 points on a challenging stage when the ship died at the end of the stage.
