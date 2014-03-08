@@ -111,6 +111,8 @@ Buzzer::render(const bool ink)
 void
 Buzzer::move(Castle *castle, Ship *ship, King *king, Stats *stats, bool &buzzer_dead)
 {
+  if (ship->alive() == false && stages->challenge() == false)
+    return;
     if (!alive()) {
 	return;
     }
